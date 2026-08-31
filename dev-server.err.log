@@ -1,0 +1,10 @@
+⚠ Port 3000 is in use by process 20724, using available port 3001 instead.
+⚠ turbopack.root should be absolute, using: C:\Users\SSD\Documents\ATFNEW
+⨯ Another next dev server is already running.
+
+- Local:        http://localhost:3000
+- PID:          20724
+- Dir:          C:\Users\SSD\Documents\ATFNEW
+- Log:          .next\dev\logs\next-development.log
+
+Run taskkill /PID 20724 /F to stop it.

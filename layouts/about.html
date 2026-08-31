@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/logo.webp">
+
+<title>About Us — Strat Meridian Consulting FZCO</title>
+<meta name="description" content="Dubai-based, partner-led advisory firm. Learn about our story, values, timeline and leadership.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --ink-primary:#071C1B;
+  --ink-secondary:#102B29;
+  --gold:#C6A76B;
+  --gold-soft:rgba(198,167,107,0.35);
+  --ivory:#F4F1E9;
+  --surface:#FFFFFF;
+  --text-primary:#101918;
+  --text-secondary:#66706D;
+  --text-on-dark:#EDEAE0;
+  --text-on-dark-mute:rgba(237,234,224,0.62);
+  --serif:'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --sans:'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --container:1240px;
+  --ease:cubic-bezier(.16,.84,.44,1);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+}
+body{
+  font-family:var(--sans);
+  background:var(--ivory);
+  color:var(--text-primary);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+ul{list-style:none;}
+.wrap{max-width:var(--container);margin:0 auto;padding:0 40px;}
+.eyebrow{
+  font-size:12px;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  font-weight:700;
+  color:var(--gold);
+}
+.serif{font-family:var(--serif);font-weight:300;}
+h1,h2,h3{font-family:var(--serif);font-weight:300;line-height:1.08;letter-spacing:-0.01em;}
+.section{padding:120px 0;}
+@media (max-width:1024px){ .section{padding:88px 0;} }
+@media (max-width:768px){ .wrap{padding:0 24px;} .section{padding:64px 0;} }
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.9s var(--ease), transform 0.9s var(--ease);}
+.reveal.in-view{opacity:1;transform:translateY(0);}
+.reveal-line{opacity:0;transform:translateY(14px);transition:opacity 0.7s var(--ease), transform 0.7s var(--ease);}
+.reveal-line.in-view{opacity:1;transform:translateY(0);}
+
+.meridian-rule{
+  width:1px;height:44px;
+  background:linear-gradient(to bottom, transparent, var(--gold));
+  margin:0 auto 22px;
+}
+
+/* BUTTONS */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:14px;font-weight:600;letter-spacing:0.01em;
+  padding:15px 26px;border-radius:2px;
+  transition:transform 0.4s var(--ease), background 0.3s var(--ease), color 0.3s var(--ease), border-color .3s var(--ease);
+  white-space:nowrap;
+}
+.btn svg{transition:transform 0.35s var(--ease);}
+.btn:hover svg{transform:translateX(5px);}
+.btn-gold{background:var(--gold);color:var(--ink-primary);}
+.btn-gold:hover{background:#d8bb84;}
+.btn-outline-dark{border:1px solid rgba(16,25,24,0.28);color:var(--text-primary);}
+.btn-outline-dark:hover{border-color:var(--ink-primary);background:rgba(16,25,24,0.04);}
+.btn-outline-light{border:1px solid rgba(237,234,224,0.32);color:var(--text-on-dark);}
+.btn-outline-light:hover{border-color:var(--gold);color:var(--gold);}
+.btn-ghost-light{color:var(--text-on-dark);font-size:13px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;position:relative;padding:6px 0;}
+.btn-ghost-light::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--gold);transform:scaleX(0.3);transform-origin:left;transition:transform .4s var(--ease);}
+.btn-ghost-light:hover::after{transform:scaleX(1);}
+.btn-ghost-dark{color:var(--text-primary);font-size:13px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;position:relative;padding:6px 0;}
+.btn-ghost-dark::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--gold);transform:scaleX(0.3);transform-origin:left;transition:transform .4s var(--ease);}
+.btn-ghost-dark:hover::after{transform:scaleX(1);}
+
+/* ================= HEADER ================= */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding:26px 0;
+  transition:padding .4s var(--ease), background .4s var(--ease), border-color .4s var(--ease);
+  border-bottom:1px solid transparent;
+}
+header .wrap{display:flex;align-items:center;justify-content:space-between;}
+header.scrolled{
+  padding:16px 0;
+  background:rgba(7,28,27,0.92);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(198,167,107,0.18);
+}
+header.solid{
+  background:rgba(7,28,27,0.96);
+  border-bottom:1px solid rgba(198,167,107,0.18);
+}
+.logo{
+  font-family:var(--serif);font-weight:500;font-size:23px;color:var(--text-on-dark);letter-spacing:0.01em;display:flex;align-items:baseline;gap:8px;
+}
+.logo .dot{color:var(--gold);font-size:16px;}
+nav.primary-nav{display:flex;align-items:center;gap:40px;}
+nav.primary-nav .nav-links{display:flex;align-items:center;gap:36px;}
+nav.primary-nav .nav-links > li{position:relative;}
+nav.primary-nav a.navlink{
+  font-size:13px;font-weight:600;letter-spacing:0.03em;text-transform:uppercase;
+  color:var(--text-on-dark-mute);
+  padding:8px 0;position:relative;
+  transition:color .3s;
+}
+nav.primary-nav a.navlink:hover, nav.primary-nav a.navlink[aria-expanded="true"], nav.primary-nav a.navlink.active{color:var(--text-on-dark);}
+nav.primary-nav a.navlink::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--gold);transition:width .3s var(--ease);}
+nav.primary-nav a.navlink:hover::after, nav.primary-nav a.navlink.active::after{width:100%;}
+.header-actions{display:flex;align-items:center;gap:18px;}
+.wa-icon{
+  width:38px;height:38px;border-radius:50%;border:1px solid rgba(237,234,224,0.28);
+  display:flex;align-items:center;justify-content:center;color:var(--text-on-dark-mute);
+  transition:border-color .3s, color .3s;
+}
+.wa-icon:hover{border-color:var(--gold);color:var(--gold);}
+
+/* mega menu */
+.mega-menu{
+  position:absolute;top:calc(100% + 22px);left:50%;transform:translateX(-50%) translateY(8px);
+  width:640px;background:var(--ink-secondary);border:1px solid rgba(198,167,107,0.2);
+  box-shadow:0 30px 60px rgba(0,0,0,0.4);
+  padding:34px;display:grid;grid-template-columns:1fr 1fr;gap:8px 28px;
+  opacity:0;pointer-events:none;transition:opacity .3s var(--ease), transform .3s var(--ease);
+}
+li.has-mega:hover .mega-menu, li.has-mega .mega-menu.open{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0);}
+.mega-menu a{
+  display:flex;flex-direction:column;gap:4px;padding:12px 10px;border-radius:2px;
+  transition:background .25s;
+}
+.mega-menu a:hover{background:rgba(198,167,107,0.08);}
+.mega-menu .num{font-size:11px;color:var(--gold);letter-spacing:0.06em;}
+.mega-menu .title{font-family:var(--serif);font-weight:400;font-size:19px;color:var(--text-on-dark);}
+
+/* mobile nav */
+.burger{display:none;flex-direction:column;gap:5px;width:26px;z-index:1200;}
+.burger span{height:1px;background:var(--text-on-dark);width:100%;transition:transform .3s, opacity .3s;}
+.mobile-panel{
+  position:fixed;inset:0;background:var(--ink-primary);z-index:1100;
+  display:flex;flex-direction:column;justify-content:center;padding:40px;
+  transform:translateY(-100%);transition:transform .5s var(--ease);
+}
+.mobile-panel.open{transform:translateY(0);}
+.mobile-panel a{font-family:var(--serif);font-weight:400;font-size:32px;color:var(--text-on-dark);padding:12px 0;display:block;border-bottom:1px solid rgba(237,234,224,0.08);}
+.mobile-panel .mob-cta{margin-top:28px;}
+
+@media (max-width:1024px){
+  nav.primary-nav .nav-links{display:none;}
+  .burger{display:flex;}
+  .header-actions .btn-outline-light{display:none;}
+}
+
+/* ================= HERO (home) ================= */
+.hero{
+  position:relative;min-height:92vh;display:flex;align-items:center;
+  background:radial-gradient(120% 100% at 78% 12%, #0d2b29 0%, var(--ink-primary) 55%);
+  overflow:hidden;padding-top:140px;padding-bottom:80px;
+}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 0.95fr;gap:40px;align-items:center;position:relative;z-index:2;}
+.hero-eyebrow{color:var(--gold);font-size:12px;letter-spacing:0.24em;text-transform:uppercase;font-weight:700;margin-bottom:26px;display:flex;align-items:center;gap:14px;}
+.hero-eyebrow::before{content:"";width:30px;height:1px;background:var(--gold);}
+.hero h1{font-size:clamp(44px,5.4vw,78px);color:var(--text-on-dark);margin-bottom:28px;font-weight:300;}
+.hero h1 em{font-style:normal;font-weight:500;color:var(--gold);}
+.hero-sub{font-size:18px;color:var(--text-on-dark-mute);max-width:460px;line-height:1.65;margin-bottom:40px;font-weight:400;}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:44px;}
+.hero-trust{display:flex;align-items:center;gap:14px;font-size:13px;color:var(--text-on-dark-mute);letter-spacing:0.01em;}
+.hero-trust .sep{width:4px;height:4px;border-radius:50%;background:var(--gold);}
+
+.globe-wrap{position:relative;height:560px;display:flex;align-items:center;justify-content:center;}
+.globe-wrap svg{width:100%;height:100%;max-width:560px;}
+.meridian-rotate{transform-origin:280px 260px;animation:spin 90s linear infinite;}
+@keyframes spin{ to{ transform:rotate(360deg); } }
+.globe-label{font-family:var(--sans);font-size:10px;letter-spacing:0.12em;fill:var(--text-on-dark-mute);}
+.globe-dot{fill:var(--gold);}
+.coord-tag{
+  position:absolute;bottom:8px;left:8px;font-size:11px;color:var(--text-on-dark-mute);letter-spacing:0.06em;
+  display:flex;flex-direction:column;gap:2px;font-family:var(--sans);
+}
+.coord-tag b{color:var(--gold);font-weight:500;}
+
+@media (max-width:1024px){
+  .hero .wrap{grid-template-columns:1fr;}
+  .globe-wrap{height:380px;order:-1;}
+  .hero{padding-top:120px;text-align:left;}
+}
+@media (max-width:640px){
+  .hero-ctas{flex-direction:column;align-items:stretch;}
+  .hero-ctas .btn{justify-content:center;}
+}
+
+/* ================= PAGE HERO (subpages) ================= */
+.page-hero{
+  position:relative;
+  background:radial-gradient(120% 100% at 78% 12%, #0d2b29 0%, var(--ink-primary) 55%);
+  color:var(--text-on-dark);
+  padding:168px 0 96px;
+  overflow:hidden;
+}
+.page-hero .breadcrumb{font-size:12.5px;color:var(--text-on-dark-mute);letter-spacing:0.05em;margin-bottom:18px;text-transform:uppercase;}
+.page-hero .breadcrumb a{color:var(--gold);}
+.page-hero .breadcrumb a:hover{text-decoration:underline;}
+.page-hero h1{font-size:clamp(40px,5vw,66px);color:var(--text-on-dark);margin-bottom:22px;font-weight:300;}
+.page-hero h1 em{font-style:normal;font-weight:500;color:var(--gold);}
+.page-hero p{color:var(--text-on-dark-mute);max-width:560px;font-size:16.5px;line-height:1.75;}
+.page-hero-bg{position:absolute;inset:0;z-index:1;opacity:0.4;}
+.page-hero .wrap{position:relative;z-index:2;}
+
+/* ================= AUTHORITY STRIP ================= */
+.authority{background:var(--ink-secondary);padding:26px 0;border-top:1px solid rgba(198,167,107,0.15);}
+.authority .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px 32px;}
+.authority-item{display:flex;align-items:center;gap:10px;font-size:12.5px;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-on-dark-mute);font-weight:500;}
+.authority-item .mark{color:var(--gold);font-size:14px;}
+
+/* ================= POSITIONING ================= */
+.positioning .wrap{display:grid;grid-template-columns:1.1fr 0.9fr;gap:80px;align-items:center;}
+.positioning h2{font-size:clamp(32px,3.6vw,52px);margin:20px 0 26px;color:var(--text-primary);font-weight:300;}
+.positioning p{font-size:16.5px;color:var(--text-secondary);max-width:440px;line-height:1.75;}
+.flow{display:flex;flex-direction:column;gap:0;border-left:1px solid rgba(16,25,24,0.14);padding-left:36px;}
+.flow-step{padding:22px 0;position:relative;}
+.flow-step::before{content:"";position:absolute;left:-41px;top:28px;width:9px;height:9px;border-radius:50%;background:var(--surface);border:1.5px solid var(--gold);}
+.flow-step .flabel{font-size:11px;letter-spacing:0.14em;color:var(--text-secondary);text-transform:uppercase;margin-bottom:6px;}
+.flow-step .fword{font-family:var(--serif);font-weight:500;font-size:28px;color:var(--text-primary);}
+.flow-step.active .fword{color:var(--gold);}
+@media (max-width:1024px){ .positioning .wrap{grid-template-columns:1fr;gap:52px;} }
+
+/* ================= STATS ROW ================= */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(16,25,24,0.12);border-bottom:1px solid rgba(16,25,24,0.12);}
+.stat-cell{padding:38px 30px;border-left:1px solid rgba(16,25,24,0.12);}
+.stat-cell:first-child{border-left:none;}
+.stat-num{font-family:var(--serif);font-weight:400;font-size:44px;color:var(--gold);margin-bottom:6px;}
+.stat-label{font-size:13px;color:var(--text-secondary);letter-spacing:0.02em;}
+@media (max-width:768px){ .stats-row{grid-template-columns:1fr 1fr;} .stat-cell{border-left:none;border-top:1px solid rgba(16,25,24,0.12);} .stat-cell:nth-child(odd){padding-left:0;} }
+
+/* ================= STORY / SPLIT ================= */
+.story .wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.story h2{font-size:clamp(30px,3.4vw,46px);margin:18px 0 22px;font-weight:300;}
+.story p{color:var(--text-secondary);font-size:16px;line-height:1.8;margin-bottom:18px;}
+@media (max-width:1024px){ .story .wrap{grid-template-columns:1fr;gap:44px;} }
+
+/* ================= SERVICES NAVIGATOR (home preview) ================= */
+.services{background:var(--ink-primary);color:var(--text-on-dark);}
+.services .head{max-width:640px;margin-bottom:70px;}
+.services h2{font-size:clamp(32px,3.6vw,50px);color:var(--text-on-dark);margin-top:18px;font-weight:300;}
+.service-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:60px;}
+.service-list{border-top:1px solid rgba(237,234,224,0.12);}
+.service-item{
+  border-bottom:1px solid rgba(237,234,224,0.12);
+  padding:24px 4px;display:flex;align-items:center;gap:20px;cursor:pointer;
+  transition:padding .3s var(--ease);
+}
+.service-item .si-num{font-size:13px;color:var(--text-on-dark-mute);font-variant-numeric:tabular-nums;width:26px;}
+.service-item .si-title{font-family:var(--serif);font-weight:400;font-size:22px;color:var(--text-on-dark-mute);transition:color .3s;}
+.service-item .si-line{margin-left:auto;width:0;height:1px;background:var(--gold);transition:width .35s var(--ease);}
+.service-item:hover .si-title, .service-item.active .si-title{color:var(--text-on-dark);}
+.service-item.active .si-num{color:var(--gold);}
+.service-item.active .si-line{width:28px;}
+
+.service-detail{position:relative;min-height:360px;}
+.sd-pane{display:none;animation:fadeUp .5s var(--ease);}
+.sd-pane.active{display:block;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+.sd-eyebrow{color:var(--gold);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:16px;}
+.sd-title{font-family:var(--serif);font-weight:400;font-size:32px;color:var(--text-on-dark);margin-bottom:18px;}
+.sd-desc{color:var(--text-on-dark-mute);font-size:15.5px;line-height:1.75;max-width:480px;margin-bottom:28px;}
+.sd-caps{display:grid;grid-template-columns:1fr 1fr;gap:10px 26px;margin-bottom:34px;}
+.sd-caps li{font-size:14px;color:var(--text-on-dark-mute);padding-left:16px;position:relative;}
+.sd-caps li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:1px;background:var(--gold);}
+
+.service-accordion{display:none;}
+@media (max-width:900px){
+  .service-grid{display:none;}
+  .service-accordion{display:block;border-top:1px solid rgba(237,234,224,0.12);}
+  .sa-item{border-bottom:1px solid rgba(237,234,224,0.12);}
+  .sa-head{display:flex;align-items:center;justify-content:space-between;padding:20px 4px;}
+  .sa-head .si-title{font-family:var(--serif);font-weight:400;font-size:19px;color:var(--text-on-dark);}
+  .sa-body{max-height:0;overflow:hidden;transition:max-height .4s var(--ease);}
+  .sa-item.open .sa-body{max-height:460px;}
+  .sa-body-inner{padding:0 4px 24px;}
+  .sa-plus{width:16px;height:16px;position:relative;flex-shrink:0;}
+  .sa-plus::before,.sa-plus::after{content:"";position:absolute;background:var(--gold);}
+  .sa-plus::before{width:100%;height:1px;top:50%;}
+  .sa-plus::after{height:100%;width:1px;left:50%;transition:transform .3s;}
+  .sa-item.open .sa-plus::after{transform:scaleY(0);}
+}
+
+/* ================= FULL SERVICES LIST (services.html) ================= */
+.service-full-list{border-top:1px solid rgba(16,25,24,0.12);}
+.service-full{
+  padding:70px 0;border-bottom:1px solid rgba(16,25,24,0.12);
+  display:grid;grid-template-columns:0.6fr 1.4fr;gap:60px;align-items:start;scroll-margin-top:110px;
+}
+.service-full-media{position:sticky;top:130px;}
+.service-full-num{font-family:var(--serif);font-weight:300;font-size:80px;color:var(--gold-soft);line-height:1;margin-bottom:18px;}
+.service-full-media img{border-radius:6px;width:100%;object-fit:cover;aspect-ratio:4/3;}
+.service-full h2{font-size:clamp(26px,2.8vw,36px);margin-bottom:18px;font-weight:400;}
+.service-full-desc{color:var(--text-secondary);font-size:16px;line-height:1.8;max-width:600px;margin-bottom:30px;}
+.service-full-caps{display:grid;grid-template-columns:1fr 1fr;gap:14px 30px;margin-bottom:32px;}
+.service-full-caps li{font-size:14.5px;color:var(--text-primary);padding-left:18px;position:relative;line-height:1.5;}
+.service-full-caps li::before{content:"";position:absolute;left:0;top:10px;width:8px;height:1px;background:var(--gold);}
+@media (max-width:900px){
+  .service-full{grid-template-columns:1fr;gap:30px;}
+  .service-full-media{position:static;}
+}
+
+.service-jump{display:flex;flex-wrap:wrap;gap:10px;border-top:1px solid rgba(16,25,24,0.12);border-bottom:1px solid rgba(16,25,24,0.12);padding:22px 0;margin-bottom:10px;}
+.service-jump a{
+  font-size:12.5px;letter-spacing:0.03em;text-transform:uppercase;font-weight:600;
+  padding:9px 16px;border:1px solid rgba(16,25,24,0.18);border-radius:20px;color:var(--text-secondary);
+  transition:all .3s var(--ease);
+}
+.service-jump a:hover{border-color:var(--gold);color:var(--text-primary);background:rgba(198,167,107,0.08);}
+
+/* ================= UAE SECTION ================= */
+.uae{background:var(--ivory);}
+.uae .wrap{display:grid;grid-template-columns:1fr 0.85fr;gap:70px;align-items:center;}
+.uae h2{font-size:clamp(30px,3.4vw,46px);margin:18px 0 22px;font-weight:300;}
+.uae p{color:var(--text-secondary);font-size:16px;line-height:1.75;max-width:460px;margin-bottom:16px;}
+.uae-list{display:grid;grid-template-columns:1fr 1fr;gap:12px 22px;margin:28px 0 36px;}
+.uae-list li{font-size:14px;color:var(--text-primary);padding-left:16px;position:relative;}
+.uae-list li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:1px;background:var(--gold);}
+.uae-map{width:100%;aspect-ratio:1/1;max-width:440px;margin:0 auto;}
+@media (max-width:1024px){ .uae .wrap{grid-template-columns:1fr;gap:44px;} .uae-map{order:-1;} }
+
+/* ================= GLOBAL ADVISORY ================= */
+.global{background:var(--ink-secondary);color:var(--text-on-dark);position:relative;overflow:hidden;}
+.global h2{font-size:clamp(30px,3.4vw,48px);color:var(--text-on-dark);margin:18px 0 50px;max-width:640px;font-weight:300;}
+.global-map{width:100%;max-width:900px;margin:0 auto 60px;}
+.global-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;border-top:1px solid rgba(198,167,107,0.18);padding-top:40px;}
+.global-cols h3{font-family:var(--sans);font-weight:700;font-size:13px;letter-spacing:0.12em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
+.global-cols p{font-size:14.5px;color:var(--text-on-dark-mute);line-height:1.7;}
+@media (max-width:768px){ .global-cols{grid-template-columns:1fr;gap:30px;} }
+
+/* ================= WHY US ================= */
+.why .head{max-width:580px;margin-bottom:60px;}
+.why h2{font-size:clamp(30px,3.4vw,46px);margin-top:18px;font-weight:300;}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(16,25,24,0.1);}
+.why-panel{background:var(--ivory);padding:48px 44px;}
+.why-panel .wn{font-size:12px;color:var(--text-secondary);letter-spacing:0.06em;margin-bottom:24px;}
+.why-panel h3{font-family:var(--serif);font-weight:400;font-size:25px;margin-bottom:14px;}
+.why-panel p{color:var(--text-secondary);font-size:15px;line-height:1.7;max-width:400px;}
+@media (max-width:768px){ .why-grid{grid-template-columns:1fr;} .why-panel{padding:40px 28px;} }
+
+/* ================= VALUES (about) ================= */
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(16,25,24,0.1);}
+.value-panel{background:var(--surface);padding:44px 38px;}
+.value-panel .vn{font-family:var(--serif);font-weight:300;font-size:34px;color:var(--gold-soft);margin-bottom:20px;}
+.value-panel h3{font-family:var(--serif);font-weight:400;font-size:23px;margin-bottom:12px;}
+.value-panel p{color:var(--text-secondary);font-size:14.5px;line-height:1.7;}
+@media (max-width:768px){ .values-grid{grid-template-columns:1fr;} }
+
+/* ================= TIMELINE (about) ================= */
+.timeline{border-top:1px solid rgba(16,25,24,0.12);}
+.tl-item{display:grid;grid-template-columns:120px 1fr;gap:30px;padding:30px 0;border-bottom:1px solid rgba(16,25,24,0.12);}
+.tl-item .tl-year{font-family:var(--serif);font-weight:400;font-size:24px;color:var(--gold);}
+.tl-item h4{font-family:var(--serif);font-weight:400;font-size:20px;margin-bottom:6px;}
+.tl-item p{font-size:14.5px;color:var(--text-secondary);line-height:1.6;max-width:520px;}
+@media (max-width:600px){ .tl-item{grid-template-columns:1fr;gap:6px;} }
+
+/* ================= LEADERSHIP ================= */
+.leadership{background:var(--surface);}
+.leadership .head{max-width:560px;margin-bottom:60px;}
+.leadership h2{font-size:clamp(30px,3.4vw,46px);margin-top:18px;font-weight:300;}
+.partner-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(16,25,24,0.08);}
+.partner-card{background:var(--surface);padding:0;position:relative;overflow:hidden;cursor:pointer;}
+.partner-photo{
+  aspect-ratio:4/5;width:100%;
+  background:linear-gradient(160deg,#e7e2d3,#cfc9b4);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+}
+.partner-photo .initials{font-family:var(--serif);font-size:56px;color:rgba(16,25,24,0.28);}
+.partner-photo::after{
+  content:"View Profile →";
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  background:rgba(7,28,27,0.82);color:var(--gold);font-size:13px;letter-spacing:0.06em;text-transform:uppercase;font-weight:600;
+  opacity:0;transition:opacity .35s var(--ease);
+}
+.partner-card:hover .partner-photo::after{opacity:1;}
+.partner-info{padding:26px 30px 34px;}
+.partner-info h3{font-family:var(--serif);font-weight:400;font-size:23px;margin-bottom:4px;}
+.partner-role{font-size:12.5px;color:var(--gold);letter-spacing:0.04em;margin-bottom:2px;}
+.partner-creds{font-size:12.5px;color:var(--text-secondary);margin-bottom:14px;}
+.partner-bio{font-size:13.5px;color:var(--text-secondary);line-height:1.65;}
+@media (max-width:900px){ .partner-grid{grid-template-columns:1fr;overflow-x:visible;} }
+
+/* ================= WHO WE HELP ================= */
+.who{background:var(--ink-primary);color:var(--text-on-dark);}
+.who h2{font-size:clamp(30px,3.4vw,46px);color:var(--text-on-dark);margin:18px 0 56px;max-width:600px;font-weight:300;}
+.who-list{border-top:1px solid rgba(237,234,224,0.14);}
+.who-item{
+  display:grid;grid-template-columns:60px 1fr 1fr;gap:24px;align-items:baseline;
+  padding:30px 0;border-bottom:1px solid rgba(237,234,224,0.14);
+  transition:padding-left .3s var(--ease);
+}
+.who-item:hover{padding-left:14px;}
+.who-item .wn{font-size:13px;color:var(--gold);}
+.who-item h3{font-family:var(--serif);font-weight:400;font-size:24px;color:var(--text-on-dark);}
+.who-item p{font-size:14.5px;color:var(--text-on-dark-mute);max-width:340px;}
+@media (max-width:768px){ .who-item{grid-template-columns:1fr;gap:8px;} }
+
+/* ================= PROCESS ================= */
+.process{background:var(--ivory);}
+.process .head{max-width:560px;margin-bottom:70px;}
+.process h2{font-size:clamp(30px,3.4vw,46px);margin-top:18px;font-weight:300;}
+.process-row{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:30px;}
+.process-row::before{content:"";position:absolute;top:17px;left:0;right:0;height:1px;background:rgba(16,25,24,0.14);}
+.process-line-fill{position:absolute;top:17px;left:0;height:1px;background:var(--gold);width:0%;transition:width 1.2s var(--ease);}
+.process-step{position:relative;padding-top:52px;}
+.process-step .pnum{
+  position:absolute;top:0;left:0;width:34px;height:34px;border-radius:50%;
+  background:var(--ivory);border:1px solid var(--gold);color:var(--gold);
+  display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;
+}
+.process-step h3{font-family:var(--serif);font-weight:400;font-size:22px;margin-bottom:10px;}
+.process-step p{font-size:14px;color:var(--text-secondary);line-height:1.65;}
+@media (max-width:768px){ .process-row{grid-template-columns:1fr;gap:36px;} .process-row::before, .process-line-fill{display:none;} }
+
+/* ================= INSIGHTS ================= */
+.insights .head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;gap:24px;flex-wrap:wrap;}
+.insights h2{font-size:clamp(30px,3.4vw,46px);margin-top:18px;font-weight:300;}
+.article-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(16,25,24,0.1);}
+.article-card{background:var(--surface);transition:background .3s;}
+.article-card:hover{background:#fdfcf9;}
+.article-card .ac-body{padding:36px 32px;}
+.article-cat{font-size:11px;letter-spacing:0.12em;color:var(--gold);text-transform:uppercase;margin-bottom:22px;font-weight:700;}
+.article-card h3{font-family:var(--serif);font-weight:400;font-size:21px;line-height:1.28;margin-bottom:18px;min-height:56px;}
+.article-tag{font-size:12px;color:var(--text-secondary);border-top:1px solid rgba(16,25,24,0.1);padding-top:14px;}
+@media (max-width:900px){ .article-grid{grid-template-columns:1fr;} }
+
+/* ================= FAQ ================= */
+.faq{background:var(--ivory);}
+.faq .wrap{max-width:840px;}
+.faq .head{margin-bottom:50px;}
+.faq h2{font-size:clamp(30px,3.4vw,46px);margin-top:18px;font-weight:300;}
+.faq-cat-label{font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);font-weight:700;margin:44px 0 6px;}
+.faq-cat-label:first-child{margin-top:0;}
+.faq-item{border-bottom:1px solid rgba(16,25,24,0.14);}
+.faq-q{
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding:26px 2px;font-family:var(--serif);font-weight:400;font-size:19px;
+}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .45s var(--ease);}
+.faq-a-inner{padding:0 2px 26px;color:var(--text-secondary);font-size:15px;line-height:1.7;max-width:680px;}
+.faq-item.open .faq-a{max-height:320px;}
+.faq-plus{width:16px;height:16px;position:relative;flex-shrink:0;}
+.faq-plus::before,.faq-plus::after{content:"";position:absolute;background:var(--gold);}
+.faq-plus::before{width:100%;height:1px;top:50%;}
+.faq-plus::after{height:100%;width:1px;left:50%;transition:transform .3s;}
+.faq-item.open .faq-plus::after{transform:scaleY(0);}
+
+/* ================= CONTACT PAGE ================= */
+.contact-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:70px;align-items:start;}
+.contact-cards{display:flex;flex-direction:column;gap:1px;background:rgba(16,25,24,0.1);margin-bottom:30px;}
+.contact-card{background:var(--surface);padding:28px 30px;}
+.contact-card .cc-label{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:10px;}
+.contact-card .cc-main{font-family:var(--serif);font-weight:400;font-size:20px;margin-bottom:4px;}
+.contact-card .cc-sub{font-size:13.5px;color:var(--text-secondary);}
+.contact-card a.cc-link{font-size:13.5px;color:var(--text-primary);border-bottom:1px solid var(--gold-soft);}
+.contact-form-panel{background:var(--surface);padding:48px 44px;border:1px solid rgba(16,25,24,0.1);}
+.contact-form-panel h3{font-family:var(--serif);font-weight:400;font-size:27px;margin-bottom:8px;}
+.contact-form-panel .csub{color:var(--text-secondary);font-size:14px;margin-bottom:30px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+.form-field{margin-bottom:16px;}
+.form-field label{display:block;font-size:11.5px;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:8px;}
+.form-field input, .form-field select, .form-field textarea{
+  width:100%;padding:12px 14px;border:1px solid rgba(16,25,24,0.18);background:var(--surface);
+  font-family:var(--sans);font-size:14.5px;color:var(--text-primary);
+  transition:border-color .3s;
+}
+.form-field input:focus, .form-field select:focus, .form-field textarea:focus{outline:none;border-color:var(--gold);}
+.form-field textarea{resize:vertical;min-height:110px;}
+@media (max-width:1024px){ .contact-grid{grid-template-columns:1fr;gap:40px;} }
+@media (max-width:560px){ .form-row{grid-template-columns:1fr;} .contact-form-panel{padding:32px 24px;} }
+
+.office-map{width:100%;aspect-ratio:16/10;max-width:640px;}
+
+/* ================= FINAL CTA ================= */
+.final-cta{background:var(--ink-primary);color:var(--text-on-dark);position:relative;overflow:hidden;padding:150px 0;}
+.final-cta .wrap{position:relative;z-index:2;text-align:center;}
+.final-cta h2{font-size:clamp(38px,5vw,64px);color:var(--text-on-dark);margin:22px 0 26px;font-weight:300;}
+.final-cta p{color:var(--text-on-dark-mute);max-width:520px;margin:0 auto 44px;font-size:16px;line-height:1.7;}
+.final-cta .ctas{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:56px;}
+.final-contact{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;font-size:14px;color:var(--text-on-dark-mute);}
+.final-contact b{display:block;color:var(--text-on-dark);font-family:var(--serif);font-weight:400;font-size:17px;margin-bottom:4px;}
+.final-cta-bg{position:absolute;inset:0;z-index:1;opacity:0.35;}
+
+/* ================= FOOTER ================= */
+footer{background:var(--ink-secondary);color:var(--text-on-dark-mute);padding:80px 0 30px;}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:50px;margin-bottom:70px;}
+.footer-logo{font-family:var(--serif);font-weight:500;font-size:23px;color:var(--text-on-dark);margin-bottom:14px;}
+.footer-tag{font-size:13.5px;max-width:220px;line-height:1.6;}
+footer h4{font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;font-weight:700;}
+footer .footer-grid a, footer .footer-grid li{font-size:14px;line-height:2.4;display:block;}
+footer .footer-grid a:hover{color:var(--text-on-dark);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:26px;border-top:1px solid rgba(237,234,224,0.1);font-size:12.5px;flex-wrap:wrap;gap:14px;}
+.footer-bottom-links{display:flex;gap:24px;}
+@media (max-width:900px){ .footer-grid{grid-template-columns:1fr 1fr;} }
+@media (max-width:560px){ .footer-grid{grid-template-columns:1fr;gap:36px;} }
+
+/* ================= MODAL / FORM ================= */
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(7,17,16,0.72);backdrop-filter:blur(4px);
+  z-index:2000;display:flex;align-items:center;justify-content:center;padding:24px;
+  opacity:0;pointer-events:none;transition:opacity .35s var(--ease);
+}
+.modal-overlay.open{opacity:1;pointer-events:auto;}
+.modal{
+  background:var(--ivory);max-width:560px;width:100%;max-height:88vh;overflow-y:auto;
+  padding:48px 44px;position:relative;transform:translateY(20px);transition:transform .4s var(--ease);
+}
+.modal-overlay.open .modal{transform:translateY(0);}
+.modal-close{position:absolute;top:22px;right:24px;font-size:22px;color:var(--text-secondary);width:32px;height:32px;display:flex;align-items:center;justify-content:center;}
+.modal-close:hover{color:var(--ink-primary);}
+.modal h3{font-family:var(--serif);font-weight:400;font-size:29px;margin-bottom:8px;}
+.modal .msub{color:var(--text-secondary);font-size:14px;margin-bottom:32px;}
+.modal .btn{width:100%;justify-content:center;margin-top:6px;}
+@media (max-width:560px){ .modal{padding:36px 26px;} }
+
+.skip-link{position:absolute;left:-999px;top:0;background:var(--gold);color:var(--ink-primary);padding:10px 16px;z-index:3000;}
+.skip-link:focus{left:10px;top:10px;}
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible{
+  outline:2px solid var(--gold);outline-offset:2px;
+}
+
+
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header id="siteHeader" class="solid">
+  <div class="wrap">
+    <a href="index.html" class="logo"><img src="/logo.webp" style="border-radius:5px;" width="100px"/></a>
+    <nav class="primary-nav">
+      <ul class="nav-links">
+        <li><a href="index.html" class="navlink">Home</a></li>
+<li><a href="about.html" class="navlink active">About</a></li>
+<li class="has-mega"><a href="services.html" class="navlink" id="servicesTrigger" aria-expanded="false">Services</a><div class="mega-menu" id="megaMenu"><a href="services.html#service-01"><span class="num">01</span><span class="title">Transfer Pricing Advisory</span></a>
+<a href="services.html#service-02"><span class="num">02</span><span class="title">UAE Corporate Tax</span></a>
+<a href="services.html#service-03"><span class="num">03</span><span class="title">Strategic Global Tax</span></a>
+<a href="services.html#service-04"><span class="num">04</span><span class="title">VAT Advisory</span></a>
+<a href="services.html#service-05"><span class="num">05</span><span class="title">Accounting & CFO Advisory</span></a>
+<a href="services.html#service-06"><span class="num">06</span><span class="title">Management Consultancy</span></a>
+<a href="services.html#service-07"><span class="num">07</span><span class="title">Business Setup</span></a></div></li>
+<li><a href="index.html#insights" class="navlink">Insights</a></li>
+<li><a href="faq.html" class="navlink">FAQ</a></li>
+<li><a href="contact.html" class="navlink">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <a class="wa-icon" href="https://wa.me/971503058938" aria-label="WhatsApp Strat Meridian" target="_blank" rel="noopener">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.42 1.26 4.86L2 22l5.32-1.28a9.9 9.9 0 0 0 4.72 1.2h.01c5.5 0 9.96-4.46 9.96-9.96S17.54 2 12.04 2zm0 18.14c-1.5 0-2.96-.4-4.22-1.16l-.3-.18-3.16.76.76-3.08-.2-.32a8.14 8.14 0 0 1-1.28-4.4c0-4.5 3.66-8.16 8.16-8.16s8.16 3.66 8.16 8.16-3.66 8.38-8.16 8.38h.04z"/></svg>
+      </a>
+      <button class="btn btn-outline-light" onclick="openModal()">Book a Consultation
+        <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M0 5h13M9 1l4 4-4 4" stroke="currentColor" stroke-width="1.3"/></svg>
+      </button>
+      <div class="burger" id="burger" role="button" aria-label="Open menu" aria-expanded="false" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-panel" id="mobilePanel">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="services.html">Services</a>
+  <a href="index.html#insights">Insights</a>
+  <a href="faq.html">FAQ</a>
+  <a href="contact.html">Contact</a>
+  <button class="btn btn-gold mob-cta" onclick="openModal();closeMobile();">Book a Consultation →</button>
+</div>
+
+<main id="main">
+
+<section class="page-hero">
+  <svg class="page-hero-bg" viewBox="0 0 1200 500" preserveAspectRatio="none">
+    <circle cx="950" cy="120" r="220" stroke="#C6A76B" stroke-opacity="0.12" stroke-width="0.7"/>
+    <circle cx="950" cy="120" r="330" stroke="#C6A76B" stroke-opacity="0.08" stroke-width="0.7"/>
+    <line x1="0" y1="380" x2="1200" y2="300" stroke="#C6A76B" stroke-opacity="0.12" stroke-width="0.7"/>
+  </svg>
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html">Home</a> / About</div>
+    <div class="hero-eyebrow">Who We Are</div>
+    <h1>Advisory built on <em>experience</em>,<br>not templates.</h1>
+    <p>Strat Meridian Consulting FZCO is a Dubai-based advisory firm helping multinational groups, investors and founders navigate tax, transfer pricing, finance and regulatory complexity across the UAE and international markets.</p>
+  </div>
+</section>
+
+<section class="section story">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">Our Story</div>
+      <h2>Founded on a simple idea: senior advice, delivered directly.</h2>
+      <p>Strat Meridian was established in Dubai by advisors who spent their careers inside Big 4 firms and multinational finance functions, and grew frustrated watching clients get passed between layers of junior staff on matters that deserved senior attention.</p>
+      <p>We built a different model. Every engagement is led by a partner with direct, relevant experience &mdash; not delegated and reviewed at the end. It is a slower way to grow a firm, but it is the only way we know to give advice we would be comfortable relying on ourselves.</p>
+      <p>Today, our partners advise on cross-border structuring, UAE Corporate Tax, transfer pricing and financial strategy for clients operating across the UAE, India, the UK, the EU, the US, Australia, Canada and Singapore.</p>
+    </div>
+    <div class="reveal">
+      <div class="stats-row" style="border:1px solid rgba(16,25,24,0.12);">
+        <div class="stat-cell"><div class="stat-num">30+</div><div class="stat-label">Years, most senior partner</div></div>
+        <div class="stat-cell"><div class="stat-num">8</div><div class="stat-label">Jurisdictions actively advised</div></div>
+        <div class="stat-cell"><div class="stat-num">3</div><div class="stat-label">Partner-led practice areas</div></div>
+        <div class="stat-cell"><div class="stat-num">100%</div><div class="stat-label">Partner-reviewed engagements</div></div>
+      </div>
+      <div style="margin-top:40px;">
+        <img src="/about-img.webp" style="border-radius:8px;width:100%;aspect-ratio:4/3;object-fit:cover;" alt="Strat Meridian advisory team">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section why" style="background:var(--ink-primary);color:var(--text-on-dark);">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow">Our Values</div>
+      <h2 style="color:var(--text-on-dark);">What we hold ourselves to.</h2>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="values-grid reveal">
+      <div class="value-panel" style="background:var(--ink-secondary);"><div class="vn">01</div><h3 style="color:var(--text-on-dark);">Direct Access</h3><p style="color:var(--text-on-dark-mute);">You work with the partner from day one, not a rotating team of juniors reporting upward.</p></div>
+      <div class="value-panel" style="background:var(--ink-secondary);"><div class="vn">02</div><h3 style="color:var(--text-on-dark);">Practical Rigor</h3><p style="color:var(--text-on-dark-mute);">Positions we take are defensible under scrutiny, grounded in current regulation rather than convenience.</p></div>
+      <div class="value-panel" style="background:var(--ink-secondary);"><div class="vn">03</div><h3 style="color:var(--text-on-dark);">Global Fluency</h3><p style="color:var(--text-on-dark-mute);">We think in more than one jurisdiction at a time, because most of our clients operate in several.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow">Our Path</div>
+      <h2 class="serif" style="font-size:clamp(30px,3.4vw,46px);margin-top:18px;">A short history.</h2>
+    </div>
+    <div class="timeline reveal">
+      <div class="tl-item">
+        <div class="tl-year">Origins</div>
+        <div><h4>Careers built across the Big 4 and global finance functions</h4><p>Our founding partners spent the earlier parts of their careers in audit, transfer pricing and international tax roles across the US, UK, Australia and India.</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Dubai</div>
+        <div><h4>Strat Meridian Consulting FZCO is established</h4><p>The firm is founded in Dubai to serve multinational groups and UAE businesses navigating the region's evolving tax and regulatory landscape.</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Growth</div>
+        <div><h4>UAE Corporate Tax practice expands</h4><p>Following the introduction of UAE Corporate Tax, the firm builds a dedicated practice covering registration, Free Zone/QFZP positioning and compliance.</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Today</div>
+        <div><h4>A partner-led advisory across eight jurisdictions</h4><p>Strat Meridian now advises multinational groups, investors and founders across the UAE, India, UK, EU, US, Australia, Canada and Singapore.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section leadership" id="leadership">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow">Leadership</div>
+      <h2>The partners behind every recommendation.</h2>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="partner-grid reveal">
+      <div class="partner-card">
+        <div class="partner-photo"><img src="/preeti.avif" width="100%"/></div>
+        <div class="partner-info">
+          <h3>Preeti Bhatnagar</h3>
+          <div class="partner-role">Partner</div>
+          <div class="partner-creds">CIA (US), CPA (US)</div>
+          <p class="partner-bio">19+ years of experience spanning audit, transfer pricing, corporate tax and international taxation.</p>
+        </div>
+      </div>
+      <div class="partner-card">
+        <div class="partner-photo"><img src="/sagar.avif" width="100%"/></div>
+        <div class="partner-info">
+          <h3>Sagar Bajaj</h3>
+          <div class="partner-role">Partner</div>
+          <div class="partner-creds">CPA (US), CPA (Australia)</div>
+          <p class="partner-bio">International tax and finance experience across the US, UK, Australia, Canada, India and UAE.</p>
+        </div>
+      </div>
+      <div class="partner-card">
+        <div class="partner-photo"><img src="/deepak.avif" width="100%"/></div>
+        <div class="partner-info">
+          <h3>Deepak Tulsiyan</h3>
+          <div class="partner-role">Partner</div>
+          <div class="partner-creds">CPA (US), CA (India), LLB</div>
+          <p class="partner-bio">30+ years of experience across accounting, taxation, audit, financial management and strategic business advisory.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <svg class="final-cta-bg" viewBox="0 0 1200 500" preserveAspectRatio="none">
+    <line x1="0" y1="250" x2="1200" y2="180" stroke="#C6A76B" stroke-opacity="0.15" stroke-width="0.7"/>
+    <circle cx="600" cy="250" r="220" stroke="#C6A76B" stroke-opacity="0.1" stroke-width="0.7"/>
+  </svg>
+  <div class="wrap">
+    <div class="eyebrow">Work With Us</div>
+    <h2>Let's talk about<br>your situation.</h2>
+    <p>Share your business context with our partners and receive a direct, considered perspective on the right next step.</p>
+    <div class="ctas">
+      <button class="btn btn-gold" onclick="openModal()">Book a Consultation
+        <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M0 5h13M9 1l4 4-4 4" stroke="currentColor" stroke-width="1.3"/></svg>
+      </button>
+      <a href="contact.html" class="btn btn-outline-light">Visit Contact Page</a>
+    </div>
+    <div class="final-contact">
+      <div><b>Dubai, UAE</b>Headquarters</div>
+      <div><b>+971 50 30 58938</b>UAE Office</div>
+      <div><b>+91 95822 29267</b>India Office</div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Strat Meridian</div>
+        <p class="footer-tag">Global Expertise. Strategic Precision.</p>
+      </div>
+      <div>
+        <h4>Expertise</h4>
+        <a href="services.html#service-01">Transfer Pricing</a>
+        <a href="services.html#service-02">UAE Corporate Tax</a>
+        <a href="services.html#service-03">Global Tax</a>
+        <a href="services.html#service-04">VAT Advisory</a>
+        <a href="services.html#service-05">Accounting &amp; CFO Advisory</a>
+        <a href="services.html#service-06">Management Consultancy</a>
+        <a href="services.html#service-07">Business Setup</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="about.html">About</a>
+        <a href="about.html#leadership">Leadership</a>
+        <a href="index.html#insights">Insights</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <span style="display:block;line-height:2.4;">Dubai, UAE</span>
+        <span style="display:block;line-height:2.4;">+971 50 30 58938</span>
+        <a href="https://wa.me/971503058938">WhatsApp</a>
+        <a href="mailto:info@stratmeridian.com">info@stratmeridian.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Strat Meridian Consulting FZCO</span>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+    <h3>Request a Consultation</h3>
+    <p class="msub">Share a few details and a senior advisor will follow up directly.</p>
+    <form id="consultForm" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-field"><label for="fname">Full Name</label><input id="fname" type="text" required></div>
+        <div class="form-field"><label for="femail">Business Email</label><input id="femail" type="email" required></div>
+      </div>
+      <div class="form-row">
+        <div class="form-field"><label for="fphone">Phone / WhatsApp</label><input id="fphone" type="tel" required></div>
+        <div class="form-field"><label for="fcompany">Company Name</label><input id="fcompany" type="text"></div>
+      </div>
+      <div class="form-field">
+        <label for="fservice">Service Required</label>
+        <select id="fservice">
+          <option>Transfer Pricing</option>
+          <option>UAE Corporate Tax</option>
+          <option>Global Tax</option>
+          <option>VAT</option>
+          <option>Accounting / CFO</option>
+          <option>Management Consultancy</option>
+          <option>Business Setup</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-field"><label for="fmsg">Message</label><textarea id="fmsg" placeholder="Briefly describe your situation"></textarea></div>
+      <button type="submit" class="btn btn-gold">Request Consultation
+        <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M0 5h13M9 1l4 4-4 4" stroke="currentColor" stroke-width="1.3"/></svg>
+      </button>
+    </form>
+  </div>
+</div>
+
+<script>
+
+/* ============ HEADER SCROLL ============ */
+const header = document.getElementById('siteHeader');
+function refreshHeader(){ header.classList.toggle('scrolled', window.scrollY > 40); }
+window.addEventListener('scroll', refreshHeader);
+refreshHeader();
+
+/* ============ MOBILE NAV ============ */
+const burger = document.getElementById('burger');
+const mobilePanel = document.getElementById('mobilePanel');
+function toggleMobile(){
+  const open = mobilePanel.classList.toggle('open');
+  burger.setAttribute('aria-expanded', open);
+}
+function closeMobile(){ mobilePanel.classList.remove('open'); burger.setAttribute('aria-expanded','false'); }
+burger.addEventListener('click', toggleMobile);
+burger.addEventListener('keydown', (e)=>{ if(e.key==='Enter'||e.key===' ') toggleMobile(); });
+mobilePanel.querySelectorAll('a').forEach(a=>a.addEventListener('click', closeMobile));
+
+/* ============ MODAL ============ */
+const modalOverlay = document.getElementById('modalOverlay');
+function openModal(){ modalOverlay.classList.add('open'); document.body.style.overflow='hidden'; }
+function closeModal(){ modalOverlay.classList.remove('open'); document.body.style.overflow=''; }
+modalOverlay.addEventListener('click', (e)=>{ if(e.target===modalOverlay) closeModal(); });
+document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
+function handleSubmit(e){
+  e.preventDefault();
+  const modal = document.querySelector('.modal');
+  modal.innerHTML = `<button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+    <h3>Thank you</h3>
+    <p class="msub" style="margin-bottom:0;">Your request has been noted. A senior advisor will be in touch shortly.</p>`;
+}
+
+/* ============ SCROLL REVEAL ============ */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){ entry.target.classList.add('in-view'); }
+  });
+}, {threshold:0.15});
+document.querySelectorAll('.reveal, .reveal-line').forEach(el=>io.observe(el));
+
+/* ============ FAQ TOGGLE (generic) ============ */
+document.querySelectorAll('.faq-item').forEach(item=>{
+  const q = item.querySelector('.faq-q');
+  if(!q) return;
+  q.addEventListener('click', ()=>{
+    const wasOpen = item.classList.contains('open');
+    item.parentElement.querySelectorAll('.faq-item').forEach(el=>el.classList.remove('open'));
+    if(!wasOpen) item.classList.add('open');
+  });
+});
+
+/* ============ SERVICE ACCORDION (generic, mobile home preview) ============ */
+document.querySelectorAll('.sa-item').forEach(sa=>{
+  const head = sa.querySelector('.sa-head');
+  if(!head) return;
+  head.addEventListener('click', ()=> sa.classList.toggle('open'));
+});
+
+
+</script>
+</body>
+</html>

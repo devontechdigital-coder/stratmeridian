@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us – AT&F</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;800;900&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --green:    #8AD974;
+      --cyan:     #61CBF3;
+      --coral:    #F0A988;
+      --green-d:  #5aad48;
+      --cyan-d:   #2da8d8;
+      --coral-d:  #d07a5a;
+      --dark:     #000000;
+      --dark2:    #0a0a0a;
+      --dark3:    #111111;
+      --dark4:    #161616;
+      --muted:    #666666;
+      --muted2:   #444444;
+      --border-g: rgba(138,217,116,0.2);
+      --border-c: rgba(97,203,243,0.2);
+      --border-o: rgba(240,169,136,0.2);
+      --border:   rgba(255,255,255,0.07);
+      --text:     #e8e8e8;
+      --text-d:   #888888;
+      --white:    #ffffff;
+      --shadow:   0 20px 60px rgba(0,0,0,0.8);
+      --radius:   18px;
+      --nh:       68px;
+    }
+
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Syne',sans-serif;background:var(--dark);color:var(--text);overflow-x:hidden;}
+    h1,h2,h3,h4,h5,h6{font-family:'Raleway',sans-serif;font-weight:800;color:var(--white);}
+    a{text-decoration:none;}
+    p{font-family:'Syne',sans-serif;}
+
+    /* NAVBAR */
+    .navbar{
+      position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nh);
+      background:rgba(0,0,0,0.85);backdrop-filter:blur(20px);
+      border-bottom:1px solid rgba(255,255,255,0.05);
+    }
+    .navbar .container{display:flex;align-items:center;height:100%;}
+    .navbar-brand{font-family:'Raleway',sans-serif;font-size:1.5rem;font-weight:800;color:var(--green) !important;}
+    .navbar-nav .nav-link{
+      color:var(--muted) !important;font-family:'Syne',sans-serif;font-weight:600;
+      font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;
+      padding:8px 13px !important;transition:color .25s;
+    }
+    .navbar-nav .nav-link:hover,.navbar-nav .nav-link.active{color:var(--white) !important;}
+    .btn-nav{
+      font-family:'Syne',sans-serif;font-weight:700;font-size:0.76rem;
+      letter-spacing:0.1em;text-transform:uppercase;color:var(--white);background:transparent;
+      border:1px solid rgba(255,255,255,0.25);padding:10px 20px;border-radius:4px;transition:.3s ease;
+    }
+    .btn-nav:hover{background:var(--green);border-color:var(--green);color:var(--dark);}
+    @media(max-width:991px){
+      .navbar-collapse{background:var(--dark2);border:1px solid var(--border);border-radius:12px;padding:18px;margin-top:10px;}
+    }
+
+    /* BUTTONS */
+    .btn-main{
+      display:inline-flex;align-items:center;gap:8px;
+      background:var(--green);color:var(--dark) !important;
+      font-family:'Syne',sans-serif;font-weight:700;font-size:0.8rem;
+      letter-spacing:0.08em;text-transform:uppercase;
+      padding:14px 26px;border-radius:4px;border:1px solid var(--green);
+      transition:.3s ease;cursor:pointer;
+    }
+    .btn-main:hover{background:var(--green-d);border-color:var(--green-d);transform:translateY(-2px);}
+    .btn-outline-main{
+      display:inline-flex;align-items:center;gap:8px;background:transparent;
+      color:var(--white) !important;font-family:'Syne',sans-serif;font-weight:700;
+      font-size:0.8rem;letter-spacing:0.08em;text-transform:uppercase;
+      padding:13px 26px;border-radius:4px;border:1px solid rgba(255,255,255,0.2);transition:.3s ease;
+    }
+    .btn-outline-main:hover{border-color:rgba(255,255,255,.45);transform:translateY(-2px);}
+
+    /* HERO */
+    .cu-hero{
+      min-height:72vh;display:flex;align-items:center;
+      padding:120px 0 80px;position:relative;overflow:hidden;background:var(--dark);
+    }
+    .cu-hero::before{
+      content:"";position:absolute;width:300px;height:300px;border-radius:50%;
+      background:rgba(138,217,116,0.07);top:-70px;left:-90px;
+      filter:blur(8px);animation:cuFloat 8s ease-in-out infinite;
+    }
+    .cu-hero::after{
+      content:"";position:absolute;width:380px;height:380px;border-radius:50%;
+      background:rgba(97,203,243,0.05);bottom:-120px;right:-110px;
+      filter:blur(8px);animation:cuFloat 9s ease-in-out infinite 1s;
+    }
+
+    .cu-badge{
+      display:inline-flex;align-items:center;gap:8px;
+      background:rgba(97,203,243,0.07);border:1px solid var(--border-c);
+      color:var(--cyan);padding:10px 16px;border-radius:4px;
+      font-weight:700;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:18px;
+    }
+    .cu-title{
+      font-size:clamp(2.2rem,4.5vw,3.8rem);line-height:1.05;font-weight:900;
+      color:var(--white);margin-bottom:16px;letter-spacing:-0.03em;
+    }
+    .cu-title span{color:var(--green);}
+    .cu-subtitle{color:var(--text-d);font-size:1rem;line-height:1.9;max-width:620px;margin-bottom:28px;}
+
+    .cu-hero-points{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px;}
+    .cu-hero-points span{
+      background:rgba(255,255,255,0.03);border:1px solid var(--border);
+      border-radius:4px;padding:9px 14px;color:var(--text);font-weight:600;font-size:0.85rem;
+    }
+
+    /* HERO CARD */
+    .cu-hero-card{
+      background:var(--dark3);border:1px solid var(--border);
+      border-radius:var(--radius);box-shadow:var(--shadow);padding:26px;
+    }
+    .cu-mini-card{
+      background:var(--dark4);border:1px solid var(--border);
+      border-radius:14px;padding:18px;margin-bottom:12px;transition:.3s ease;
+    }
+    .cu-mini-card:last-child{margin-bottom:0;}
+    .cu-mini-card:hover{background:rgba(138,217,116,0.03);border-color:var(--border-g);}
+    .cu-mini-top{display:flex;gap:14px;align-items:center;}
+    .cu-mini-icon{
+      width:50px;height:50px;min-width:50px;border-radius:14px;display:flex;
+      align-items:center;justify-content:center;
+      background:rgba(138,217,116,0.08);border:1px solid var(--border-g);
+      color:var(--green);font-size:1.2rem;
+    }
+    .cu-mini-title{font-weight:700;color:var(--white);margin-bottom:4px;font-size:0.95rem;}
+    .cu-mini-text{color:var(--text-d);font-size:0.88rem;line-height:1.6;margin:0;}
+
+    /* SECTION */
+    .cu-section{padding:90px 0;position:relative;}
+
+    /* CARDS */
+    .cu-card{
+      background:var(--dark3);border:1px solid var(--border);
+      border-radius:var(--radius);box-shadow:var(--shadow);padding:30px;height:100%;
+    }
+    .cu-card-title{font-size:1.4rem;font-weight:800;color:var(--white);margin-bottom:10px;}
+    .cu-card-text{color:var(--text-d);line-height:1.8;margin-bottom:24px;}
+
+    /* INFO ITEMS */
+    .cu-info-item{
+      display:flex;gap:14px;align-items:flex-start;
+      padding:16px 0;border-bottom:1px solid var(--border);
+    }
+    .cu-info-item:last-child{border-bottom:none;padding-bottom:0;}
+    .cu-info-icon{
+      width:48px;height:48px;min-width:48px;border-radius:12px;
+      display:flex;align-items:center;justify-content:center;font-size:1.1rem;
+    }
+    .cu-info-icon.g{background:rgba(138,217,116,0.08);border:1px solid var(--border-g);color:var(--green);}
+    .cu-info-icon.c{background:rgba(97,203,243,0.08);border:1px solid var(--border-c);color:var(--cyan);}
+    .cu-info-icon.o{background:rgba(240,169,136,0.08);border:1px solid var(--border-o);color:var(--coral);}
+    .cu-info-label{color:var(--muted);font-size:0.72rem;font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.08em;}
+    .cu-info-value{color:var(--text);font-weight:600;line-height:1.6;margin:0;font-size:0.9rem;}
+    .cu-info-value a{color:var(--green);}
+    .cu-info-value a:hover{color:var(--green-d);}
+
+    /* FORM */
+    .form-label{
+      font-family:'Syne',sans-serif;font-size:0.68rem;font-weight:700;
+      letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;
+    }
+    .form-control,.form-select{
+      background:rgba(255,255,255,0.03) !important;border:1px solid rgba(255,255,255,0.08) !important;
+      border-radius:10px !important;color:var(--white) !important;
+      min-height:50px;padding:12px 16px;font-size:.91rem;box-shadow:none !important;transition:.3s ease;
+    }
+    .form-control::placeholder{color:var(--muted) !important;}
+    .form-control:focus,.form-select:focus{
+      border-color:var(--border-g) !important;background:rgba(138,217,116,0.03) !important;
+    }
+    .form-select option{background:var(--dark3);color:var(--white);}
+    textarea.form-control{min-height:140px;resize:none;}
+
+    /* TRUST ROW */
+    .cu-trust-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+    .cu-trust-box{
+      background:var(--dark3);border:1px solid var(--border);
+      border-radius:var(--radius);padding:24px 18px;text-align:center;transition:.3s ease;
+    }
+    .cu-trust-box:hover{background:var(--dark4);transform:translateY(-5px);border-color:var(--border-g);}
+    .cu-trust-box i{
+      width:54px;height:54px;border-radius:16px;display:inline-flex;
+      align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:14px;
+    }
+    .cu-trust-box:nth-child(1) i{background:rgba(138,217,116,0.08);border:1px solid var(--border-g);color:var(--green);}
+    .cu-trust-box:nth-child(2) i{background:rgba(97,203,243,0.08);border:1px solid var(--border-c);color:var(--cyan);}
+    .cu-trust-box:nth-child(3) i{background:rgba(240,169,136,0.08);border:1px solid var(--border-o);color:var(--coral);}
+    .cu-trust-box:nth-child(4) i{background:rgba(138,217,116,0.08);border:1px solid var(--border-g);color:var(--green);}
+    .cu-trust-box h6{font-weight:700;color:var(--white);margin-bottom:8px;font-size:0.9rem;}
+    .cu-trust-box p{color:var(--text-d);margin:0;line-height:1.65;font-size:0.86rem;}
+
+    /* SECTION TITLE */
+    .cu-section-title{font-size:clamp(1.8rem,3vw,2.5rem);font-weight:800;color:var(--white);margin-bottom:12px;letter-spacing:-0.02em;}
+    .cu-section-subtitle{color:var(--text-d);max-width:700px;line-height:1.8;margin:0 auto;}
+    .section-eyebrow{
+      display:inline-flex;align-items:center;gap:8px;
+      font-family:'Syne',sans-serif;font-size:0.7rem;font-weight:700;
+      letter-spacing:0.14em;text-transform:uppercase;
+      color:var(--green);background:rgba(138,217,116,0.07);
+      border:1px solid var(--border-g);padding:7px 14px;border-radius:4px;margin-bottom:14px;
+    }
+    .section-eyebrow.c{color:var(--cyan);background:rgba(97,203,243,0.07);border-color:var(--border-c);}
+    .section-eyebrow.o{color:var(--coral);background:rgba(240,169,136,0.07);border-color:var(--border-o);}
+
+    /* FOOTER */
+    footer{background:var(--dark2);border-top:1px solid var(--border);padding:70px 0 28px;}
+    .footer-logo{font-family:'Raleway',sans-serif;font-size:1.5rem;font-weight:800;display:inline-block;margin-bottom:14px;color:var(--green);}
+    .footer-text{font-size:.87rem;line-height:1.8;color:var(--muted);max-width:300px;}
+    .footer-title{font-family:'Syne',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--white);margin-bottom:20px;}
+    .footer-links{list-style:none;padding:0;margin:0;}
+    .footer-links li{margin-bottom:10px;}
+    .footer-links a{color:var(--muted);font-size:.87rem;transition:.25s ease;}
+    .footer-links a:hover{color:var(--green);padding-left:4px;}
+    .footer-bottom{
+      border-top:1px solid var(--border);margin-top:50px;padding-top:22px;
+      display:flex;justify-content:space-between;align-items:center;
+      flex-wrap:wrap;gap:10px;color:var(--muted);font-size:.82rem;
+    }
+    .footer-bottom a{color:var(--green);}
+
+    /* REVEAL */
+    .cu-reveal{opacity:0;transform:translateY(28px);transition:all .75s ease;}
+    .cu-reveal.active{opacity:1;transform:translateY(0);}
+
+    @keyframes cuFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(18px);}}
+
+    @media(max-width:991px){
+      .cu-section{padding:75px 0;}
+      .cu-trust-row{grid-template-columns:repeat(2,1fr);}
+      .cu-hero{min-height:auto;}
+    }
+    @media(max-width:767px){
+      .cu-card,.cu-hero-card{padding:22px 18px;}
+      .cu-trust-row{grid-template-columns:1fr;}
+      .cu-title{font-size:2.2rem;}
+      .cu-section-title{font-size:1.7rem;}
+      .footer-bottom{flex-direction:column;text-align:center;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="/ATF">AT&amp;F</a>
+    <button class="navbar-toggler border-0 shadow-none" type="button"
+            data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <i class="bi bi-list fs-2" style="color:var(--white)"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="/ATF">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="service.php">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.php">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="faq.php">FAQ</a></li>
+        <li class="nav-item"><a class="nav-link active" href="contact.php">Contact Us</a></li>
+        <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+          <a class="btn-nav" href="login.php">Get Started</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="cu-hero">
+  <div class="container position-relative" style="z-index:2;">
+    <div class="row align-items-center g-4">
+      <div class="col-lg-7">
+        <div class="cu-reveal">
+          <div class="cu-badge"><i class="bi bi-envelope-paper"></i> Contact Us</div>
+          <h1 class="cu-title">Let's talk about your <span>tax filing needs</span></h1>
+          <p class="cu-subtitle">Have questions about your return, documents, pricing, or next steps? Reach out to our team and we'll guide you with clear, professional support.</p>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="#cu-contact-form" class="btn-main">Send a Message <i class="bi bi-arrow-right"></i></a>
+            <a href="#cu-contact-info" class="btn-outline-main">View Contact Info</a>
+          </div>
+          <div class="cu-hero-points">
+            <span>Fast Response</span>
+            <span>Secure Communication</span>
+            <span>Expert Guidance</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="cu-hero-card cu-reveal">
+          <div class="cu-mini-card">
+            <div class="cu-mini-top">
+              <div class="cu-mini-icon"><i class="bi bi-telephone"></i></div>
+              <div>
+                <div class="cu-mini-title">Call Our Team</div>
+                <p class="cu-mini-text">Speak with us directly for profile setup, filing questions, or guidance.</p>
+              </div>
+            </div>
+          </div>
+          <div class="cu-mini-card">
+            <div class="cu-mini-top">
+              <div class="cu-mini-icon" style="background:rgba(97,203,243,0.08);border-color:var(--border-c);color:var(--cyan);"><i class="bi bi-envelope"></i></div>
+              <div>
+                <div class="cu-mini-title">Email Support</div>
+                <p class="cu-mini-text">Share your questions anytime and get clear responses from our support team.</p>
+              </div>
+            </div>
+          </div>
+          <div class="cu-mini-card">
+            <div class="cu-mini-top">
+              <div class="cu-mini-icon" style="background:rgba(240,169,136,0.08);border-color:var(--border-o);color:var(--coral);"><i class="bi bi-shield-lock"></i></div>
+              <div>
+                <div class="cu-mini-title">Secure & Confidential</div>
+                <p class="cu-mini-text">Your personal details and tax information are handled with care and privacy.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT INFO + FORM -->
+<section class="cu-section" id="cu-contact-info" style="background:var(--dark2);">
+  <div class="container">
+    <div class="row g-4 align-items-stretch">
+      <div class="col-lg-5">
+        <div class="cu-card cu-reveal">
+          <h2 class="cu-card-title">Get in Touch</h2>
+          <p class="cu-card-text">We're here to help with individual returns, visa-related tax filing, foreign income cases, trust or estate filing, and profile setup questions.</p>
+
+          <div class="cu-info-item">
+            <div class="cu-info-icon g"><i class="bi bi-telephone-fill"></i></div>
+            <div>
+              <div class="cu-info-label">Phone</div>
+              <p class="cu-info-value"><a href="tel:+1234567890">+1 234 567 890</a></p>
+            </div>
+          </div>
+          <div class="cu-info-item">
+            <div class="cu-info-icon c"><i class="bi bi-envelope-fill"></i></div>
+            <div>
+              <div class="cu-info-label">Email</div>
+              <p class="cu-info-value"><a href="mailto:info@example.com">info@example.com</a></p>
+            </div>
+          </div>
+          <div class="cu-info-item">
+            <div class="cu-info-icon o"><i class="bi bi-geo-alt-fill"></i></div>
+            <div>
+              <div class="cu-info-label">Office Address</div>
+              <p class="cu-info-value">123 Business Street, Suite 400, New York, NY 10001</p>
+            </div>
+          </div>
+          <div class="cu-info-item">
+            <div class="cu-info-icon g"><i class="bi bi-clock-fill"></i></div>
+            <div>
+              <div class="cu-info-label">Working Hours</div>
+              <p class="cu-info-value">Monday – Friday: 9:00 AM – 6:00 PM</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-7" id="cu-contact-form">
+        <div class="cu-card cu-reveal">
+          <h2 class="cu-card-title">Send Us a Message</h2>
+          <p class="cu-card-text">Fill out the form below and our team will get back to you as soon as possible.</p>
+          <form>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">First Name *</label>
+                <input type="text" class="form-control" placeholder="John">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Last Name *</label>
+                <input type="text" class="form-control" placeholder="Doe">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Email Address *</label>
+                <input type="email" class="form-control" placeholder="you@example.com">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Phone Number</label>
+                <input type="tel" class="form-control" placeholder="(555) 123-4567">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Service Type</label>
+                <select class="form-select">
+                  <option selected>Select Service</option>
+                  <option>Individual Tax Return</option>
+                  <option>Visa Holder Tax Filing</option>
+                  <option>Foreign Student Filing</option>
+                  <option>Trust / Estate Filing</option>
+                  <option>Foreign Income Reporting</option>
+                  <option>General Consultation</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Tax Year</label>
+                <select class="form-select">
+                  <option selected>Select Tax Year</option>
+                  <option>2025</option>
+                  <option>2024</option>
+                  <option>2023</option>
+                  <option>2022 or earlier</option>
+                  <option>Multiple years</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label class="form-label">Message *</label>
+                <textarea class="form-control" placeholder="Tell us briefly about your tax situation or question..."></textarea>
+              </div>
+              <div class="col-12 d-flex flex-wrap gap-3 mt-2">
+                <button type="submit" class="btn-main" style="justify-content:center;">Submit Inquiry <i class="bi bi-send"></i></button>
+                <button type="reset" class="btn-outline-main">Reset Form</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="cu-section pt-0" style="background:var(--dark2);">
+  <div class="container">
+    <div class="text-center mb-5 cu-reveal">
+      <div class="section-eyebrow c"><i class="bi bi-shield-check"></i> Why Contact Us</div>
+      <h2 class="cu-section-title">We're Here to <span style="color:var(--green);">Help</span></h2>
+      <p class="cu-section-subtitle">We keep communication simple, professional, and focused on helping you move forward confidently.</p>
+    </div>
+    <div class="cu-trust-row">
+      <div class="cu-trust-box cu-reveal">
+        <i class="bi bi-lightning-charge"></i>
+        <h6>Quick Response</h6>
+        <p>Get timely replies to your tax filing questions and support needs.</p>
+      </div>
+      <div class="cu-trust-box cu-reveal">
+        <i class="bi bi-file-earmark-check"></i>
+        <h6>Clear Guidance</h6>
+        <p>We explain the next steps, required documents, and filing flow simply.</p>
+      </div>
+      <div class="cu-trust-box cu-reveal">
+        <i class="bi bi-shield-lock"></i>
+        <h6>Secure Process</h6>
+        <p>Your details are handled carefully with privacy and professionalism.</p>
+      </div>
+      <div class="cu-trust-box cu-reveal">
+        <i class="bi bi-people"></i>
+        <h6>Friendly Support</h6>
+        <p>Helpful communication for both simple and more complex tax situations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <span class="footer-logo">AT&amp;F</span>
+        <p class="footer-text">Professional US tax filing support for students, visa holders, citizens, and individuals with foreign income or complex tax situations.</p>
+      </div>
+      <div class="col-lg-2 col-md-4">
+        <div class="footer-title">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="/ATF">Home</a></li>
+          <li><a href="service.php">Services</a></li>
+          <li><a href="faq.php">FAQ</a></li>
+          <li><a href="contact.php">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-4">
+        <div class="footer-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="#">1040 Filing</a></li>
+          <li><a href="#">1040NR Filing</a></li>
+          <li><a href="#">Foreign Income Support</a></li>
+          <li><a href="#">FBAR Assistance</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-4">
+        <div class="footer-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="tel:+1234567890">+1 234 567 890</a></li>
+          <li><a href="mailto:info@example.com">info@example.com</a></li>
+          <li><a href="contact.php">Book Consultation</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 AT&amp;F. All Rights Reserved.</span>
+      <span>Website Design By <a href="https://seotowebdesign.com/" target="_blank">SEO To Webdesign</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const cuRevealEls = document.querySelectorAll('.cu-reveal');
+  function cuRevealOnScroll() {
+    const trigger = window.innerHeight - 80;
+    cuRevealEls.forEach(el => { if(el.getBoundingClientRect().top < trigger) el.classList.add('active'); });
+  }
+  window.addEventListener('load', cuRevealOnScroll);
+  window.addEventListener('scroll', cuRevealOnScroll);
+</script>
+</body>
+</html>

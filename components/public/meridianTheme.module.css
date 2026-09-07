@@ -174,7 +174,7 @@ html :where(.shell) p{margin:0;}
 /* mega menu */
 .hasMega{position:relative;}
 .megaMenu{
-  position:absolute;top:calc(100% + 22px);left:50%;transform:translateX(-50%) translateY(8px);
+  position:absolute;top:calc(100% + 5px);left:50%;transform:translateX(-50%) translateY(8px);
   width:640px;background:var(--ink-secondary);border:1px solid rgba(198,167,107,0.2);
   box-shadow:0 30px 60px rgba(0,0,0,0.4);
   padding:34px;display:grid;grid-template-columns:1fr 1fr;gap:8px 28px;

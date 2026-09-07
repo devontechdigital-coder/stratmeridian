@@ -183,7 +183,7 @@ body {
 .atf-public h6 {
   font-family: "Raleway", "Outfit", sans-serif;
   font-weight: 800;
-  color: var(--white);
+  color: black;
 }
 
 .atf-public a { text-decoration: none; }

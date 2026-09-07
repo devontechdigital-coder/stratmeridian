@@ -146,6 +146,11 @@ html :where(.shell) p{margin:0;}
 .logo{
   font-family:var(--serif);font-weight:500;font-size:23px;color:var(--text-on-dark);letter-spacing:0.01em;display:flex;align-items:baseline;gap:8px;
 }
+.logo>img{
+      border-radius: 5px;
+    max-height: 55px;
+    width: auto;
+}
 .primaryNav{display:flex;align-items:center;gap:40px;}
 .navLinks{display:flex;align-items:center;gap:36px;}
 .navLinks > li{position:relative;}

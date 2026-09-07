@@ -21,7 +21,7 @@ import {
   X,
 } from "lucide-react";
 
-const ROOT_PREFIX = "listmein/atandfinternational/";
+const ROOT_PREFIX = "cloud/";
 
 function getFileIcon(fileName = "") {
   const ext = fileName.split(".").pop()?.toLowerCase();

@@ -7,8 +7,6 @@ import { useSession } from "next-auth/react";
 import { useConsultationModal } from "@/components/public/PublicShell";
 import styles from "@/components/public/meridianTheme.module.css";
 
-const logoUrl = "https://static.wixstatic.com/media/07bc36_bc0c9dbee948416eb3b96deace2dec65~mv2.png/v1/fill/w_276,h_108,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/07bc36_bc0c9dbee948416eb3b96deace2dec65~mv2.png";
-
 const fallbackNavItems = [
   { id: "home", text: "Home", href: "/#home", target: "_self", children: [] },
   { id: "services", text: "Services", href: "/#services", target: "_self", children: [] },
@@ -74,12 +72,18 @@ export default function Header({ initialNavItems = [], settings = null }) {
   };
 
   const whatsappDigits = (settings?.phoneNumber || "").replace(/[^\d]/g, "");
+  const websiteName = settings?.websiteName?.trim() || "Strat Meridian";
+  const logoUrl = settings?.metaLogo?.trim();
 
   return (
     <header className={`${styles.shell} ${styles.header} ${scrolled ? styles.headerScrolled : ""} ${!isHome ? styles.headerSolid : ""}`}>
       <div className={styles.wrap}>
         <Link className={styles.logo} href="/#home" aria-label="Home">
-          <img width="120" src={logoUrl} alt="Logo" style={{ borderRadius: 5 }} />
+          {logoUrl ? (
+            <img width="120" src={logoUrl} alt={websiteName} style={{ borderRadius: 5 }} />
+          ) : (
+            <span>{websiteName}</span>
+          )}
         </Link>
 
         <nav className={styles.primaryNav}>

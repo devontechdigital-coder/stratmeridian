@@ -1,10 +1,9 @@
 import Link from "next/link";
 import styles from "@/components/public/meridianTheme.module.css";
 
-const logoUrl = "https://static.wixstatic.com/media/07bc36_bc0c9dbee948416eb3b96deace2dec65~mv2.png/v1/fill/w_276,h_108,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/07bc36_bc0c9dbee948416eb3b96deace2dec65~mv2.png";
-
 export default function Footer({ settings = null }) {
-  const websiteName = settings?.websiteName || "Strat Meridian";
+  const websiteName = settings?.websiteName?.trim() || "Strat Meridian";
+  const logoUrl = settings?.metaLogo?.trim();
   const phone = settings?.phoneNumber || "+1 234 567 890";
   const email = settings?.emailId || "info@example.com";
   const address = [settings?.address, settings?.city, settings?.state, settings?.country].filter(Boolean).join(", ");
@@ -15,7 +14,11 @@ export default function Footer({ settings = null }) {
         <div className={styles.footerGrid}>
           <div>
             <span className={styles.footerLogo}>
-              <img width="100" src={logoUrl} alt={websiteName} style={{ borderRadius: 5 }} />
+              {logoUrl ? (
+                <img width="100" src={logoUrl} alt={websiteName} style={{ borderRadius: 5 }} />
+              ) : (
+                websiteName
+              )}
             </span>
             <p className={styles.footerTag}>
               Professional US tax filing support for students, visa holders, citizens, and individuals with foreign income or complex tax situations.

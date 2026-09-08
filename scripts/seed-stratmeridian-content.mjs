@@ -39,12 +39,14 @@ const Menu = mongoose.models.Menu || mongoose.model('Menu', MenuSchema);
 
 const sourceUrl = 'https://www.stratmeridian.com/';
 const leadershipSourceUrl = 'https://www.stratmeridian.com/leadership-team';
+const leadershipPageId = new mongoose.Types.ObjectId('6a9fd1cf542d4726177a65bf');
 
 const leaders = [
   {
     name: 'Preeti Bhatnagar',
     slug: 'preeti-bhatnagar',
     role: 'Partner - CIA(US), CPA(US)',
+    kicker: 'Partner',
     image: 'https://static.wixstatic.com/media/ab906c_7d061c3fdc3b4edd96da1fadac9732b3~mv2.jpg/v1/fill/w_469,h_663,al_c,q_80,enc_auto/ab906c_7d061c3fdc3b4edd96da1fadac9732b3~mv2.jpg',
     intro: 'Strategic finance and tax professional with 19+ years of experience spanning audit, transfer pricing, corporate tax, and international taxation.',
     focus: ['Transfer pricing', 'Corporate tax', 'International taxation', 'Audit and finance advisory'],
@@ -53,6 +55,7 @@ const leaders = [
     name: 'Sagar Bajaj',
     slug: 'sagar-bajaj',
     role: 'Partner - CPA(US), CPA(AU)',
+    kicker: 'Partner',
     image: 'https://static.wixstatic.com/media/2a8b7d_b42507c1bda74847a875d5f1866878be~mv2.png/v1/crop/x_80,y_0,w_640,h_800/fill/w_640,h_800,al_c,q_90,enc_auto/2a8b7d_b42507c1bda74847a875d5f1866878be~mv2.png',
     intro: 'International tax and finance professional with experience in global taxation, audit, accounting, and cross-border advisory across the US, UK, Australia, Canada, India, and UAE.',
     focus: ['International tax', 'Cross-border advisory', 'Accounting and audit', 'Global compliance'],
@@ -61,9 +64,20 @@ const leaders = [
     name: 'Deepak Tulsiyan',
     slug: 'deepak-tulsiyan',
     role: 'Partner - CPA(USA), CA (India), LLB',
+    kicker: 'Partner',
     image: 'https://static.wixstatic.com/media/ab906c_6c637b2f8a5c4cd58710d748cf86710b~mv2.jpg/v1/fill/w_409,h_529,al_c,q_80,enc_auto/ab906c_6c637b2f8a5c4cd58710d748cf86710b~mv2.jpg',
     intro: 'Seasoned finance and advisory professional with 30+ years of experience across accounting, taxation, audit, financial management, and strategic business advisory.',
     focus: ['Accounting', 'Taxation', 'Audit', 'Financial management', 'Strategic business advisory'],
+  },
+  {
+    name: 'Vaibhav Tulsiyan',
+    slug: 'vaibhav-tulsiyan',
+    role: 'Head of Accounting and Operations - ACCA (UK)',
+    kicker: 'Leadership',
+    image: '',
+    intro: 'Head of Accounting and Operations at Strat Meridian Consulting FZCO, leading accounting delivery, operational infrastructure, client onboarding, reporting, billing, and quality processes.',
+    bio: 'Vaibhav Tulsiyan is Head of Accounting and Operations at Strat Meridian Consulting FZCO, where he leads the firm\'s accounting delivery and the operational infrastructure that supports its advisory work. His remit covers client accounting, bookkeeping and management reporting; engagement planning, resourcing and turnaround; and the firm\'s internal systems, billing and quality processes. He is typically a client\'s first point of contact during onboarding and for day-to-day accounting matters, and coordinates delivery across the firm\'s teams so that output remains consistent regardless of where the work is performed. Alongside his role at Strat Meridian, Vaibhav leads accounting and compliance delivery at GK Kedia & Company, an established chartered accountancy practice in India. That work spans indirect tax filings and reconciliations, corporate and individual return preparation, statutory registrations, regulatory portal administration and audit support, and gives the firm\'s UAE clients direct access to an experienced India-side delivery team. Vaibhav is a Chartered Certified Accountant and a full member of the Association of Chartered Certified Accountants (ACCA, UK), with over eight years of experience in accounting and tax compliance. He works in English and Hindi. He works most closely with clients requiring ongoing accounting and CFO support, and with engagement teams delivering UAE corporate tax and VAT compliance.',
+    focus: ['Accounting delivery', 'Bookkeeping and management reporting', 'Operations and quality processes', 'UAE corporate tax and VAT compliance', 'India-side accounting and compliance delivery'],
   },
 ];
 
@@ -179,8 +193,8 @@ function serviceHtmlContent(service) {
 function leaderCard(leader) {
   return `
     <a class="sm-leader-card" href="/${leader.slug}">
-      <img src="${leader.image}" alt="${leader.name}" loading="lazy" />
-      <span class="sm-leader-kicker">Partner</span>
+      ${leader.image ? `<img src="${leader.image}" alt="${leader.name}" loading="lazy" />` : `<div class="sm-leader-photo-fallback">${leader.name.split(' ').map((part) => part[0]).join('')}</div>`}
+      <span class="sm-leader-kicker">${leader.kicker || 'Leadership'}</span>
       <h2>${leader.name}</h2>
       <p class="sm-role">${leader.role}</p>
       <p>${leader.intro}</p>
@@ -194,8 +208,8 @@ function leadershipIndexHtml() {
     <div class="sm-page sm-leadership-page">
       <section class="sm-intro">
         <p class="sm-eyebrow">Leadership Team</p>
-        <h2>Senior advisory leadership for complex international tax, transfer pricing, UAE corporate tax, and accounting matters.</h2>
-        <p>Strat Meridian is led by experienced partners who combine technical tax depth, accounting discipline, audit experience, and practical cross-border judgment.</p>
+        <h2>Senior advisory leadership for complex international tax, transfer pricing, UAE corporate tax, accounting, and operations matters.</h2>
+        <p>Strat Meridian is led by experienced leaders who combine technical tax depth, accounting discipline, audit experience, operational rigor, and practical cross-border judgment.</p>
       </section>
       <section class="sm-leader-grid">
         ${leaders.map(leaderCard).join('')}
@@ -217,13 +231,13 @@ function leaderDetailHtml(leader) {
     <div class="sm-page sm-profile-page">
       <section class="sm-profile">
         <div class="sm-profile-photo">
-          <img src="${leader.image}" alt="${leader.name}" loading="lazy" />
+          ${leader.image ? `<img src="${leader.image}" alt="${leader.name}" loading="lazy" />` : `<div class="sm-profile-photo-fallback">${leader.name.split(' ').map((part) => part[0]).join('')}</div>`}
         </div>
         <div class="sm-profile-copy">
           <p class="sm-eyebrow">Leadership Team</p>
           <h2>${leader.name}</h2>
           <p class="sm-role">${leader.role}</p>
-          <p>${leader.intro}</p>
+          <p>${leader.bio || leader.intro}</p>
           <div class="sm-focus-list">
             ${leader.focus.map((item) => `<span>${item}</span>`).join('')}
           </div>
@@ -312,10 +326,11 @@ const stratPageCss = `
   .sm-eyebrow{color:var(--gold);font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin:0 0 14px}
   .sm-intro h2,.sm-profile-copy h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4.2vw,58px);line-height:1.05;margin:0 0 18px;color:var(--ink-primary)}
   .sm-intro p,.sm-profile-copy p,.sm-section-grid p,.sm-callout p,.sm-process p{font-size:16px;line-height:1.8;color:var(--text-secondary)}
-  .sm-leader-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+  .sm-leader-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
   .sm-leader-card{display:block;background:var(--surface);border:1px solid rgba(16,25,24,.08);text-decoration:none;color:inherit;padding-bottom:28px;transition:.2s}
   .sm-leader-card:hover{transform:translateY(-4px);box-shadow:0 24px 60px rgba(16,25,24,.12)}
-  .sm-leader-card img{width:100%;aspect-ratio:4/5;object-fit:cover;background:#f3efe6;display:block}
+  .sm-leader-card img,.sm-leader-photo-fallback{width:100%;aspect-ratio:4/5;object-fit:cover;background:#f3efe6;display:flex;align-items:center;justify-content:center}
+  .sm-leader-photo-fallback,.sm-profile-photo-fallback{font-family:var(--serif);font-size:64px;color:rgba(16,25,24,.3);background:linear-gradient(160deg,#e7e2d3,#cfc9b4)}
   .sm-leader-card h2{font-family:var(--serif);font-size:27px;font-weight:400;color:var(--ink-primary);margin:8px 28px}
   .sm-leader-card p,.sm-leader-kicker,.sm-card-link{margin-left:28px;margin-right:28px}
   .sm-leader-kicker,.sm-card-link{display:block;color:var(--gold);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-top:24px}
@@ -326,7 +341,7 @@ const stratPageCss = `
   .sm-band p{color:var(--text-on-dark-mute);max-width:680px}
   .sm-button{display:inline-flex;align-items:center;justify-content:center;background:var(--gold);color:var(--ink-primary)!important;text-decoration:none;padding:14px 22px;border-radius:2px;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;white-space:nowrap}
   .sm-profile{display:grid;grid-template-columns:minmax(260px,380px) 1fr;gap:54px;align-items:center}
-  .sm-profile-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;background:#f3efe6}
+  .sm-profile-photo img,.sm-profile-photo-fallback{width:100%;aspect-ratio:4/5;object-fit:cover;background:#f3efe6;display:flex;align-items:center;justify-content:center}
   .sm-focus-list{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0}
   .sm-focus-list span{border:1px solid rgba(198,167,107,.45);color:var(--ink-primary);padding:9px 12px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
   .sm-section-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:48px}
@@ -353,7 +368,9 @@ const stratPageCss = `
   .sm-process h3{color:var(--text-on-dark);margin-top:18px}
   .sm-process p{color:var(--text-on-dark-mute)}
   .sm-back-link{color:var(--gold);font-weight:800;text-decoration:none}
-  @media(max-width:900px){.sm-leader-grid,.sm-profile,.sm-section-grid,.sm-service-layout,.sm-pillar-grid,.sm-outcomes,.sm-process{grid-template-columns:1fr}.sm-band{display:block}.sm-band .sm-button{margin-top:18px}.sm-bullet-grid{grid-template-columns:1fr}}
+  @media(max-width:1100px){.sm-leader-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:900px){.sm-profile,.sm-section-grid,.sm-service-layout,.sm-pillar-grid,.sm-outcomes,.sm-process{grid-template-columns:1fr}.sm-band{display:block}.sm-band .sm-button{margin-top:18px}.sm-bullet-grid{grid-template-columns:1fr}}
+  @media(max-width:620px){.sm-leader-grid{grid-template-columns:1fr}}
 `;
 
 const homeContent = {
@@ -680,24 +697,32 @@ await Settings.findOneAndUpdate(
   { upsert: true, returnDocument: 'after' }
 );
 
-await Page.findOneAndUpdate(
-  { slug: 'our-leadership-team' },
-  {
-    $set: {
-      title: 'Our Leadership Team',
-      slug: 'our-leadership-team',
-      rawHtml: leadershipIndexHtml(),
-      editorPreference: 'raw',
-      metaTitle: 'Our Leadership Team | Strat Meridian Consulting FZCO',
-      metaDescription: 'Meet Strat Meridian leadership: Preeti Bhatnagar, Sagar Bajaj, and Deepak Tulsiyan.',
-      metaKeywords: 'Strat Meridian leadership, Preeti Bhatnagar, Sagar Bajaj, Deepak Tulsiyan, Dubai tax advisors',
-      customCss: stratPageCss,
-      status: 'active',
-      sourceUrl: leadershipSourceUrl,
-    },
-  },
-  { upsert: true, returnDocument: 'after' }
+const leadershipPageUpdate = {
+  title: 'Our Leadership Team',
+  slug: 'our-leadership-team',
+  rawHtml: leadershipIndexHtml(),
+  editorPreference: 'raw',
+  metaTitle: 'Our Leadership Team | Strat Meridian Consulting FZCO',
+  metaDescription: 'Meet Strat Meridian leadership: Preeti Bhatnagar, Sagar Bajaj, Deepak Tulsiyan, and Vaibhav Tulsiyan.',
+  metaKeywords: 'Strat Meridian leadership, Preeti Bhatnagar, Sagar Bajaj, Deepak Tulsiyan, Vaibhav Tulsiyan, Dubai tax advisors',
+  customCss: stratPageCss,
+  status: 'active',
+  sourceUrl: leadershipSourceUrl,
+};
+
+const leadershipPage = await Page.findOneAndUpdate(
+  { _id: leadershipPageId },
+  { $set: leadershipPageUpdate },
+  { returnDocument: 'after' }
 );
+
+if (!leadershipPage) {
+  await Page.findOneAndUpdate(
+    { slug: 'our-leadership-team' },
+    { $set: leadershipPageUpdate },
+    { upsert: true, returnDocument: 'after' }
+  );
+}
 
 for (const leader of leaders) {
   await Page.findOneAndUpdate(

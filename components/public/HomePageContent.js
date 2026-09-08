@@ -269,7 +269,11 @@ export default function HomePageContent({ settings }) {
             {settings.leadership.items.map((member, index) => (
               <Link className={styles.partnerCard} href={member.href || "/our-leadership-team"} key={`${member.title}-${index}`}>
                 <div className={styles.partnerPhoto}>
-                  {member.image && <img src={member.image} alt={member.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />}
+                  {member.image ? (
+                    <img src={member.image} alt={member.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                  ) : (
+                    <span className={styles.initials}>{getInitials(member.title)}</span>
+                  )}
                 </div>
                 <div className={styles.partnerInfo}>
                   <h3>{member.title}</h3>
@@ -397,6 +401,15 @@ function SmartLink({ link, className }) {
   );
   if (href.startsWith("/") && !href.startsWith("//")) return <Link href={href} className={className}>{content}</Link>;
   return <a href={href} className={className}>{content}</a>;
+}
+
+function getInitials(value = "") {
+  return value
+    .split(" ")
+    .filter(Boolean)
+    .map((part) => part[0])
+    .join("")
+    .slice(0, 3);
 }
 
 function SectionIntro({ section, headClassName }) {

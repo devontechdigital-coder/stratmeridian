@@ -11,6 +11,10 @@ function renderHtml(model) {
   return model.editorPreference === 'raw' ? model.rawHtml : model.htmlContent;
 }
 
+function cssUrl(value) {
+  return String(value || '').replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+}
+
 function heroFeaturesFor(service) {
   const features = Array.isArray(service.heroFeatures)
     ? service.heroFeatures.filter((feature) => feature?.title || feature?.description)
@@ -59,6 +63,15 @@ export default async function PublicServicePage({ params }) {
     notFound();
   }
   const heroFeatures = heroFeaturesFor(service);
+  const backgroundImageUrl = service.backgroundImageUrl?.trim();
+  const heroStyle = backgroundImageUrl
+    ? {
+        backgroundImage: `linear-gradient(120deg, rgba(13,43,41,.86), rgba(7,28,27,.94)), url("${cssUrl(backgroundImageUrl)}")`,
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+      }
+    : undefined;
 
   return (
     <div className={`${styles.shell} ${styles.page}`}>
@@ -92,11 +105,7 @@ export default async function PublicServicePage({ params }) {
 
       <section
         className={styles.pageHero}
-        style={{
-          background: service.backgroundImageUrl
-            ? `linear-gradient(120% 100% at 78% 12%, rgba(13,43,41,.86), rgba(7,28,27,.94)), url(${service.backgroundImageUrl}) center/cover`
-            : undefined,
-        }}
+        style={heroStyle}
       >
         <div className={styles.wrap}>
           <div className={styles.serviceHeroGrid}>

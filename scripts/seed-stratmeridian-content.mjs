@@ -69,98 +69,112 @@ const leaders = [
 
 const services = [
   {
-    title: 'Transfer Pricing',
-    slug: 'transfer-pricing',
-    shortParagraph: 'End-to-end transfer pricing advisory and documentation for multinational groups operating across key jurisdictions.',
-    metaDescription: 'Transfer pricing support including Local File, Master File, benchmarking analysis, salary benchmarking, and defensible documentation.',
+    title: 'Transfer Pricing Advisory',
+    slug: 'transfer-pricing-advisory',
+    shortParagraph: 'Design and defend robust transfer pricing models that stand up to scrutiny in every jurisdiction you operate in.',
+    metaDescription: 'Transfer pricing advisory including Master File, Local File, salary benchmarking, RPT transaction benchmarking, TP policy design, audit support, and OECD-aligned solutions.',
     icon: 'bi-diagram-3',
     color: 'green',
-    htmlContent: `
-      <section class="service-content">
-        <h2>Transfer Pricing Advisory</h2>
-        <p>Strat Meridian delivers end-to-end transfer pricing support for multinational groups that need clear, defensible documentation across jurisdictions.</p>
-        <h3>What We Support</h3>
-        <ul>
-          <li>Local File and Master File preparation</li>
-          <li>Benchmarking studies and economic analysis</li>
-          <li>Salary benchmarking and intercompany pricing support</li>
-          <li>Transfer pricing policy review and documentation readiness</li>
-          <li>Risk-focused advisory for cross-border operating models</li>
-        </ul>
-        <p>Our approach combines technical rigor with practical commercial judgment, helping leadership teams reduce tax risk while keeping documentation aligned with business realities.</p>
-      </section>
-    `,
-  },
-  {
-    title: 'International Tax',
-    slug: 'international-tax',
-    shortParagraph: 'Comprehensive international tax support for individuals, investors, and businesses with footprints across the US, UK, Canada, Australia, India, and the UAE.',
-    metaDescription: 'International tax return support and cross-border advisory for US, UK, Canada, Australia, India, and UAE matters.',
-    icon: 'bi-globe2',
-    color: 'cyan',
-    htmlContent: `
-      <section class="service-content">
-        <h2>International Tax Advisory</h2>
-        <p>We help global investors, internationally mobile individuals, and multinational businesses manage tax compliance across borders with clarity and control.</p>
-        <h3>Coverage Areas</h3>
-        <ul>
-          <li>Tax return support for the US, UK, Canada, and Australia</li>
-          <li>Cross-border income and reporting review</li>
-          <li>Tax residency and treaty-position guidance</li>
-          <li>Ongoing compliance coordination for global footprints</li>
-          <li>Advisory for individuals and businesses with multi-country obligations</li>
-        </ul>
-        <p>Our team focuses on practical compliance, strategic alignment, and reducing surprises before filings or transactions move forward.</p>
-      </section>
-    `,
+    bullets: ['Master File & Local File', 'Salary Benchmarking', 'RPT transactions Benchmarking (TNMM, CUP, etc)', 'TP policy design', 'Audit support', 'OECD-aligned solutions'],
+    pillars: [
+      { title: 'Design', text: 'Build intercompany pricing models aligned with value creation and commercial realities.' },
+      { title: 'Defend', text: 'Prepare documentation and benchmarking that can withstand tax authority scrutiny.' },
+      { title: 'Govern', text: 'Create repeatable policies and review processes for ongoing compliance.' },
+    ],
+    outcomes: ['Reduced TP controversy risk', 'Clearer global pricing governance', 'Documentation aligned to OECD and local rules'],
   },
   {
     title: 'UAE Corporate Tax',
     slug: 'uae-corporate-tax',
-    shortParagraph: 'UAE Corporate Tax registration, return filing, Free Zone structuring, and ongoing compliance support for businesses in the UAE.',
-    metaDescription: 'UAE Corporate Tax support including CT registration, return filing, QFZP considerations, Free Zone structuring, and compliance.',
+    shortParagraph: 'Navigate the UAE corporate tax regime with confidence, from registration to ongoing compliance.',
+    metaDescription: 'UAE Corporate Tax support including registration, return filing, Free Zone QFZP advisory, Small Business Relief, and tax health checks.',
     icon: 'bi-building-check',
     color: 'orange',
-    htmlContent: `
-      <section class="service-content">
-        <h2>UAE Corporate Tax</h2>
-        <p>Strat Meridian provides end-to-end UAE Corporate Tax support so businesses can stay aligned with the UAE's evolving tax landscape.</p>
-        <h3>Key Services</h3>
-        <ul>
-          <li>Corporate Tax registration</li>
-          <li>Corporate Tax return filing</li>
-          <li>Free Zone and QFZP structuring support</li>
-          <li>Ongoing compliance and documentation review</li>
-          <li>Advisory on tax-risk areas for UAE businesses</li>
-        </ul>
-        <p>We combine UAE specialization with international tax experience, giving companies a structured path from registration through annual compliance.</p>
-      </section>
-    `,
+    bullets: ['Corporate Tax Registration', 'Corporate Tax Return filing', 'Free Zone (QFZP) advisory', 'Small Business Relief', 'Tax health checks'],
+    pillars: [
+      { title: 'Register', text: 'Set up Corporate Tax obligations correctly and understand filing responsibilities.' },
+      { title: 'Comply', text: 'Prepare CT returns, calculations, and supporting documentation with clear review steps.' },
+      { title: 'Optimize', text: 'Assess reliefs, Free Zone considerations, and effective tax-rate planning.' },
+    ],
+    outcomes: ['FTA-ready compliance position', 'Cleaner Free Zone and QFZP assessment', 'Lower risk through periodic health checks'],
   },
   {
-    title: 'Accounting Services',
-    slug: 'accounting-services',
-    shortParagraph: 'Bookkeeping, management accounts, financial statements, reporting, and audit support delivered for sophisticated international businesses.',
-    metaDescription: 'Accounting services including bookkeeping, management accounts, financial statement preparation, reporting, and audit support.',
+    title: 'Strategic Global Tax Solutions',
+    slug: 'strategic-global-tax-solutions',
+    shortParagraph: 'Optimize your global footprint with technical tax expertise across the UAE, India, UK, EU, and US.',
+    metaDescription: 'Strategic global tax advisory for cross-border structuring, investment planning, treaty relief, and coordinated compliance across major jurisdictions.',
+    icon: 'bi-globe2',
+    color: 'cyan',
+    bullets: ['Cross-border structuring and investment planning', 'Double taxation treaties and relief optimization', 'Coordinated compliance and tax return filing support across US, UK, Australia, Canada and Singapore'],
+    pillars: [
+      { title: 'Structure', text: 'Cross-border structuring and investment planning for global holding and operating models.' },
+      { title: 'Advisory', text: 'Double taxation treaty analysis and relief optimization across key markets.' },
+      { title: 'Compliance', text: 'Coordinated tax return and compliance support across multiple jurisdictions.' },
+    ],
+    outcomes: ['Practical multi-country tax strategy', 'Better treaty and relief visibility', 'Coordinated global compliance roadmap'],
+  },
+  {
+    title: 'VAT Advisory',
+    slug: 'vat-advisory',
+    shortParagraph: 'Stay compliant with UAE VAT while keeping your operations efficient and audit-ready.',
+    metaDescription: 'UAE VAT advisory including VAT registration, return filing, audit support, process implementation, and dispute support.',
+    icon: 'bi-receipt-cutoff',
+    color: 'orange',
+    bullets: ['VAT registration', 'Return filing', 'Audit support'],
+    pillars: [
+      { title: 'Assess', text: 'Review VAT implications across transactions, supply chains, and operating processes.' },
+      { title: 'Implement', text: 'Set up VAT processes and records that support accurate recurring filings.' },
+      { title: 'Respond', text: 'Support VAT audits, reviews, disputes, and authority communication.' },
+    ],
+    outcomes: ['Cleaner VAT filing process', 'Improved audit readiness', 'Reduced indirect tax leakage and penalties'],
+  },
+  {
+    title: 'Accounting & CFO Advisory',
+    slug: 'accounting-cfo-advisory',
+    shortParagraph: 'Reliable numbers and strategic financial insight without building a large in-house team.',
+    metaDescription: 'Accounting and CFO advisory including bookkeeping, MIS reporting, financial statements, e-invoicing, board reporting, and controls.',
     icon: 'bi-calculator',
     color: 'green',
-    htmlContent: `
-      <section class="service-content">
-        <h2>Accounting and Reporting Services</h2>
-        <p>Our accounting services give growing and international businesses reliable financial records, clearer reporting, and stronger audit readiness.</p>
-        <h3>What We Provide</h3>
-        <ul>
-          <li>Bookkeeping and transaction recording</li>
-          <li>Management accounts and financial reporting</li>
-          <li>Financial statement preparation</li>
-          <li>Audit coordination and support</li>
-          <li>Ongoing accounting process support</li>
-        </ul>
-        <p>We deliver the rigor and responsiveness expected by businesses that need clean financial information for tax, compliance, management, and strategic decisions.</p>
-      </section>
-    `,
+    bullets: ['Bookkeeping', 'MIS reporting', 'Financial statements', 'E - Invoicing'],
+    pillars: [
+      { title: 'Record', text: 'Maintain dependable books and transaction records for tax, management, and audit needs.' },
+      { title: 'Report', text: 'Deliver MIS, financial statements, and decision-ready reporting for stakeholders.' },
+      { title: 'Advise', text: 'Provide virtual CFO perspective on controls, cash flow, margins, and investor readiness.' },
+    ],
+    outcomes: ['Timely management reporting', 'Stronger financial controls', 'Board and investor-ready information'],
+  },
+  {
+    title: 'Management Consultancy and Business Setup',
+    slug: 'management-consultancy-business-setup',
+    shortParagraph: 'Set up and scale your UAE presence with the right free zone, mainland, and global structure from day one.',
+    metaDescription: 'Management consultancy and business setup support including free zone and mainland setup, licensing, global structuring, and entity planning.',
+    icon: 'bi-briefcase',
+    color: 'cyan',
+    bullets: ['Free zone & mainland setup', 'Global structuring'],
+    pillars: [
+      { title: 'Plan', text: 'Identify the business, licensing, tax, and ownership considerations before setup.' },
+      { title: 'Set Up', text: 'Guide free zone and mainland options with practical entity-formation support.' },
+      { title: 'Scale', text: 'Align the UAE structure with cross-border expansion and long-term growth needs.' },
+    ],
+    outcomes: ['Clear setup route', 'Structure aligned with tax and compliance needs', 'Practical launch and growth roadmap'],
   },
 ];
+
+const serviceSlugs = services.map((service) => service.slug);
+
+function serviceHtmlContent(service) {
+  return `
+    <section class="service-content">
+      <h2>${service.title}</h2>
+      <p>${service.shortParagraph}</p>
+      <h3>Service Inclusions</h3>
+      <ul>
+        ${service.bullets.map((item) => `<li>${item}</li>`).join('')}
+      </ul>
+      <p>${service.metaDescription}</p>
+    </section>
+  `;
+}
 
 function leaderCard(leader) {
   return `
@@ -241,22 +255,52 @@ function serviceRawHtml(service) {
         <h2>${service.title}</h2>
         <p>${service.shortParagraph}</p>
       </section>
-      <section class="sm-section-grid">
-        <div>
-          <p class="sm-eyebrow">What We Do</p>
-          ${service.htmlContent}
+      <section class="sm-service-layout">
+        <div class="sm-service-main">
+          <p class="sm-eyebrow">What We Support</p>
+          <h3>Focused advisory built around the work your business actually needs.</h3>
+          <p>${service.metaDescription}</p>
+          <div class="sm-bullet-grid">
+            ${service.bullets.map((item) => `<span>${item}</span>`).join('')}
+          </div>
         </div>
-        <div class="sm-callout">
-          <p class="sm-eyebrow">Strategic Excellence</p>
+        <aside class="sm-callout">
+          <p class="sm-eyebrow">Partner-Led Advisory</p>
           <h3>Bespoke solutions for global complexity</h3>
-          <p>Our work is designed to help businesses, multinational groups, and investors manage compliance obligations while reducing risk and improving decision quality.</p>
+          <p>Our work helps multinational groups, founders, and investors manage compliance obligations while improving decision quality and reducing risk.</p>
           <a class="sm-button" href="/contact">Book a Consultation</a>
+        </aside>
+      </section>
+      <section class="sm-pillar-grid">
+        ${service.pillars.map((pillar, index) => `
+          <div>
+            <span>${String(index + 1).padStart(2, '0')}</span>
+            <h3>${pillar.title}</h3>
+            <p>${pillar.text}</p>
+          </div>
+        `).join('')}
+      </section>
+      <section class="sm-outcomes">
+        <div>
+          <p class="sm-eyebrow">Client Outcomes</p>
+          <h3>Clearer decisions. Stronger compliance. Less avoidable risk.</h3>
         </div>
+        <ul>
+          ${service.outcomes.map((item) => `<li>${item}</li>`).join('')}
+        </ul>
       </section>
       <section class="sm-process">
         <div><span>01</span><h3>Review</h3><p>We understand the structure, documents, transactions, and jurisdictions involved.</p></div>
         <div><span>02</span><h3>Analyze</h3><p>We identify key risks, compliance requirements, and available advisory positions.</p></div>
         <div><span>03</span><h3>Deliver</h3><p>We prepare clear outputs and support execution with partner-led guidance.</p></div>
+      </section>
+      <section class="sm-band">
+        <div>
+          <p class="sm-eyebrow">Ready to discuss your structure or next transaction?</p>
+          <h2>Get a focused, partner-led view on your options.</h2>
+          <p>Share a few details about your situation and Strat Meridian will respond with practical next steps.</p>
+        </div>
+        <a class="sm-button" href="/contact">Book a Consultation</a>
       </section>
     </div>
   `;
@@ -288,6 +332,20 @@ const stratPageCss = `
   .sm-section-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:48px}
   .sm-section-grid>div,.sm-callout{background:var(--surface);border:1px solid rgba(16,25,24,.08);padding:32px}
   .sm-section-grid h3,.sm-callout h3,.sm-process h3{font-family:var(--serif);font-size:28px;font-weight:400;color:var(--ink-primary);margin:0 0 12px}
+  .sm-service-layout{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);gap:28px;margin-top:48px}
+  .sm-service-main,.sm-callout{background:var(--surface);border:1px solid rgba(16,25,24,.08);padding:34px}
+  .sm-service-main h3,.sm-pillar-grid h3,.sm-outcomes h3,.sm-callout h3{font-family:var(--serif);font-size:30px;font-weight:400;color:var(--ink-primary);line-height:1.15;margin:0 0 14px}
+  .sm-bullet-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:26px}
+  .sm-bullet-grid span{display:flex;align-items:center;min-height:54px;border:1px solid rgba(198,167,107,.32);background:rgba(198,167,107,.06);padding:13px 15px;font-size:13px;font-weight:800;color:var(--ink-primary);line-height:1.35}
+  .sm-pillar-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:32px}
+  .sm-pillar-grid>div{background:var(--ink-primary);color:var(--text-on-dark);padding:32px}
+  .sm-pillar-grid span{display:block;color:var(--gold);font-size:12px;font-weight:900;letter-spacing:.14em;margin-bottom:28px}
+  .sm-pillar-grid h3{color:var(--text-on-dark)}
+  .sm-pillar-grid p{color:var(--text-on-dark-mute)}
+  .sm-outcomes{display:grid;grid-template-columns:.8fr 1.2fr;gap:30px;margin-top:32px;padding:34px;border:1px solid rgba(16,25,24,.08);background:linear-gradient(135deg,rgba(198,167,107,.12),rgba(255,255,255,.7))}
+  .sm-outcomes ul{margin:0;padding:0;list-style:none;display:grid;gap:12px}
+  .sm-outcomes li{position:relative;padding-left:26px;color:var(--text-secondary);font-size:16px;line-height:1.7}
+  .sm-outcomes li:before{content:"";position:absolute;left:0;top:12px;width:9px;height:9px;background:var(--gold)}
   .sm-service-page ul{margin:18px 0 0;padding-left:20px;color:var(--text-secondary);line-height:1.9}
   .sm-process{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:38px}
   .sm-process div{background:var(--ink-primary);color:var(--text-on-dark);padding:30px}
@@ -295,7 +353,7 @@ const stratPageCss = `
   .sm-process h3{color:var(--text-on-dark);margin-top:18px}
   .sm-process p{color:var(--text-on-dark-mute)}
   .sm-back-link{color:var(--gold);font-weight:800;text-decoration:none}
-  @media(max-width:900px){.sm-leader-grid,.sm-profile,.sm-section-grid,.sm-process{grid-template-columns:1fr}.sm-band{display:block}.sm-band .sm-button{margin-top:18px}}
+  @media(max-width:900px){.sm-leader-grid,.sm-profile,.sm-section-grid,.sm-service-layout,.sm-pillar-grid,.sm-outcomes,.sm-process{grid-template-columns:1fr}.sm-band{display:block}.sm-band .sm-button{margin-top:18px}.sm-bullet-grid{grid-template-columns:1fr}}
 `;
 
 const homeContent = {
@@ -545,10 +603,13 @@ const headerMenuItems = [
 const footerMenuItems = [
   { id: 'footer-home', text: 'Home', href: '/#home', target: '_self', children: [] },
   { id: 'footer-services', text: 'Services', href: '/#services', target: '_self', children: [] },
-  { id: 'footer-transfer-pricing', text: 'Transfer Pricing', href: '/service/transfer-pricing', target: '_self', children: [] },
-  { id: 'footer-international-tax', text: 'International Tax', href: '/service/international-tax', target: '_self', children: [] },
-  { id: 'footer-uae-corporate-tax', text: 'UAE Corporate Tax', href: '/service/uae-corporate-tax', target: '_self', children: [] },
-  { id: 'footer-accounting-services', text: 'Accounting Services', href: '/service/accounting-services', target: '_self', children: [] },
+  ...services.map((service) => ({
+    id: `footer-${service.slug}`,
+    text: service.title,
+    href: `/service/${service.slug}`,
+    target: '_self',
+    children: [],
+  })),
   { id: 'footer-contact', text: 'Contact Us', href: '/contact', target: '_self', children: [] },
 ];
 
@@ -570,6 +631,11 @@ const category = await Category.findOneAndUpdate(
   { upsert: true, returnDocument: 'after' }
 );
 
+await Service.deleteMany({
+  sourceUrl,
+  slug: { $nin: serviceSlugs },
+});
+
 for (const service of services) {
   await Service.findOneAndUpdate(
     { slug: service.slug },
@@ -587,7 +653,7 @@ for (const service of services) {
           { icon: service.icon, title: service.title, description: service.metaDescription },
         ],
         category: category._id,
-        htmlContent: service.htmlContent,
+        htmlContent: serviceHtmlContent(service),
         rawHtml: serviceRawHtml(service),
         editorPreference: 'raw',
         metaTitle: `${service.title} | Strat Meridian Consulting FZCO`,

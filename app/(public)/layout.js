@@ -7,9 +7,10 @@ import { getMenuItems } from "@/lib/getMenus";
 export const dynamic = "force-dynamic";
 
 export default async function PublicLayout({ children }) {
-  const [settings, headerMenuItems] = await Promise.all([
+  const [settings, headerMenuItems, footerMenuItems] = await Promise.all([
     getThemeSettings(),
     getMenuItems("header"),
+    getMenuItems("footer"),
   ]);
 
   return (
@@ -20,7 +21,7 @@ export default async function PublicLayout({ children }) {
         <PublicShell>
           <Header settings={settings} initialNavItems={headerMenuItems} />
           <main style={{ flex: 1 }}>{children}</main>
-          <Footer settings={settings} />
+          <Footer settings={settings} initialFooterItems={footerMenuItems} />
         </PublicShell>
       </div>
     </>

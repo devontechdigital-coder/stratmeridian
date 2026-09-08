@@ -8,17 +8,24 @@ import { usePermissions } from "@/hooks/usePermissions";
 
 const tabs = [
   ["seo", "SEO"], ["hero", "Hero"], ["stats", "Stats"], ["trust", "Trust Bar"],
-  ["services", "Services"], ["features", "Why Us"], ["documents", "Documents"],
-  ["process", "Process"], ["cta", "Call to Action"], ["faq", "FAQ"], ["contact", "Contact"],
+  ["approach", "Approach"], ["services", "Services"], ["documents", "Documents"],
+  ["global", "Global"], ["features", "Why Us"], ["leadership", "Leadership"],
+  ["who", "Who We Help"], ["process", "Process"], ["insights", "Insights"],
+  ["cta", "Call to Action"], ["faq", "FAQ"], ["contact", "Contact"],
 ];
 
 const blankItems = {
   stats: { value: "0+", label: "New statistic", color: "g" },
   trust: { icon: "bi-check-circle", label: "New trust item" },
+  approach: { label: "New stage", word: "Clarity" },
   services: { icon: "bi-star", title: "New service", text: "Describe this service.", color: "green" },
   features: { icon: "bi-check-circle", title: "New feature", text: "Describe this feature.", color: "green" },
   documents: { icon: "bi-folder", title: "New document group", list: ["Required document"], color: "green" },
+  global: { title: "New advisory area", text: "Describe this advisory area." },
+  leadership: { title: "Leader name", role: "Role", href: "/our-leadership-team", image: "", text: "Short leadership bio." },
+  who: { num: "01", title: "New audience", text: "Describe who this section helps." },
   process: { number: "01", title: "New step", text: "Describe this step.", color: "green" },
+  insights: { title: "New insight", tag: "Insight", href: "" },
   faq: { question: "New question", answer: "Add the answer here." },
   contact: { icon: "bi-check-circle", title: "New benefit", text: "Describe this benefit.", color: "green" },
 };
@@ -170,8 +177,8 @@ export default function HomePageSettingsForm() {
       <ItemsEditor section="documents" data={data} updateItem={updateItem} addItem={addItem} removeItem={removeItem} moveItem={moveItem} />
     </SectionPanel>}
 
-    {["stats", "trust", "services", "features", "process", "faq"].includes(activeTab) && <SectionPanel section={activeTab} data={data} setSection={setSection} title={`${tabs.find(([key]) => key === activeTab)?.[1]} section`}>
-      {["services", "features", "process", "faq"].includes(activeTab) && <IntroFields section={activeTab} data={data} setSection={setSection} />}
+    {["stats", "trust", "approach", "services", "global", "features", "leadership", "who", "process", "insights", "faq"].includes(activeTab) && <SectionPanel section={activeTab} data={data} setSection={setSection} title={`${tabs.find(([key]) => key === activeTab)?.[1]} section`}>
+      {["approach", "services", "global", "features", "leadership", "who", "process", "insights", "faq"].includes(activeTab) && <IntroFields section={activeTab} data={data} setSection={setSection} />}
       <ItemsEditor section={activeTab} data={data} updateItem={updateItem} addItem={addItem} removeItem={removeItem} moveItem={moveItem} />
     </SectionPanel>}
   </form>;
@@ -188,11 +195,11 @@ function SectionPanel({ section, data, setSection, title, children }) {
 function IntroFields({ section, data, setSection }) {
   const value = data[section];
   return <div className="grid gap-5 md:grid-cols-2">
-    <Field label="Eyebrow"><input className={inputClass} value={value.eyebrow} onChange={(event) => setSection(section, "eyebrow", event.target.value)} /></Field>
-    <Field label="Eyebrow icon"><input className={inputClass} value={value.eyebrowIcon} onChange={(event) => setSection(section, "eyebrowIcon", event.target.value)} /></Field>
-    <Field label="Heading"><input className={inputClass} value={value.title} onChange={(event) => setSection(section, "title", event.target.value)} /></Field>
-    <Field label="Highlighted heading"><input className={inputClass} value={value.highlight} onChange={(event) => setSection(section, "highlight", event.target.value)} /></Field>
-    <Field label="Description" wide><textarea rows={3} className={inputClass} value={value.description} onChange={(event) => setSection(section, "description", event.target.value)} /></Field>
+    <Field label="Eyebrow"><input className={inputClass} value={value.eyebrow || ""} onChange={(event) => setSection(section, "eyebrow", event.target.value)} /></Field>
+    <Field label="Eyebrow icon"><input className={inputClass} value={value.eyebrowIcon || ""} onChange={(event) => setSection(section, "eyebrowIcon", event.target.value)} /></Field>
+    <Field label="Heading"><input className={inputClass} value={value.title || ""} onChange={(event) => setSection(section, "title", event.target.value)} /></Field>
+    <Field label="Highlighted heading"><input className={inputClass} value={value.highlight || ""} onChange={(event) => setSection(section, "highlight", event.target.value)} /></Field>
+    <Field label="Description" wide><textarea rows={3} className={inputClass} value={value.description || ""} onChange={(event) => setSection(section, "description", event.target.value)} /></Field>
   </div>;
 }
 
@@ -209,6 +216,11 @@ function ItemsEditor({ section, data, updateItem, addItem, removeItem, moveItem 
 function ItemFields({ section, item, onChange }) {
   if (section === "stats") return <div className="grid gap-4 md:grid-cols-3"><Simple label="Value" value={item.value} onChange={(value) => onChange("value", value)} /><Simple label="Label" value={item.label} onChange={(value) => onChange("label", value)} /><ColorSelect value={item.color} onChange={(value) => onChange("color", value)} stat /></div>;
   if (section === "trust") return <div className="grid gap-4 md:grid-cols-2"><Simple label="Icon class" value={item.icon} onChange={(value) => onChange("icon", value)} /><Simple label="Label" value={item.label} onChange={(value) => onChange("label", value)} /></div>;
+  if (section === "approach") return <div className="grid gap-4 md:grid-cols-2"><Simple label="Small label" value={item.label} onChange={(value) => onChange("label", value)} /><Simple label="Large word" value={item.word} onChange={(value) => onChange("word", value)} /></div>;
+  if (section === "global") return <div className="grid gap-4 md:grid-cols-2"><Simple label="Title" value={item.title} onChange={(value) => onChange("title", value)} /><Text label="Description" value={item.text} onChange={(value) => onChange("text", value)} /></div>;
+  if (section === "leadership") return <div className="grid gap-4 md:grid-cols-2"><Simple label="Name" value={item.title} onChange={(value) => onChange("title", value)} /><Simple label="Role" value={item.role} onChange={(value) => onChange("role", value)} /><Simple label="Profile link" value={item.href} onChange={(value) => onChange("href", value)} /><Simple label="Image URL" value={item.image} onChange={(value) => onChange("image", value)} /><Text label="Short bio" value={item.text} onChange={(value) => onChange("text", value)} /></div>;
+  if (section === "who") return <div className="grid gap-4 md:grid-cols-2"><Simple label="Number" value={item.num} onChange={(value) => onChange("num", value)} /><Simple label="Title" value={item.title} onChange={(value) => onChange("title", value)} /><Text label="Description" value={item.text} onChange={(value) => onChange("text", value)} /></div>;
+  if (section === "insights") return <div className="grid gap-4 md:grid-cols-3"><Simple label="Title" value={item.title} onChange={(value) => onChange("title", value)} /><Simple label="Tag" value={item.tag} onChange={(value) => onChange("tag", value)} /><Simple label="Link" value={item.href} onChange={(value) => onChange("href", value)} /></div>;
   if (section === "faq") return <div className="grid gap-4"><Simple label="Question" value={item.question} onChange={(value) => onChange("question", value)} /><Field label="Answer"><textarea rows={3} className={inputClass} value={item.answer} onChange={(event) => onChange("answer", event.target.value)} /></Field></div>;
   if (section === "process") return <div className="grid gap-4 md:grid-cols-2"><Simple label="Step number" value={item.number} onChange={(value) => onChange("number", value)} /><Simple label="Title" value={item.title} onChange={(value) => onChange("title", value)} /><Text label="Description" value={item.text} onChange={(value) => onChange("text", value)} /><ColorSelect value={item.color} onChange={(value) => onChange("color", value)} /></div>;
   if (section === "documents") return <div className="grid gap-4 md:grid-cols-2"><Simple label="Title" value={item.title} onChange={(value) => onChange("title", value)} /><Simple label="Icon class" value={item.icon} onChange={(value) => onChange("icon", value)} /><Field label="List items (one per line)"><textarea rows={5} className={inputClass} value={item.list.join("\n")} onChange={(event) => onChange("list", event.target.value.split("\n"))} /></Field><ColorSelect value={item.color} onChange={(value) => onChange("color", value)} /></div>;

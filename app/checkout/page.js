@@ -34,14 +34,15 @@ export default async function CheckoutPage({ searchParams }) {
   await connectToDatabase();
 
   if (serviceSlug) {
-    const [service, settings, headerMenuItems] = await Promise.all([
+    const [service, settings, headerMenuItems, footerMenuItems] = await Promise.all([
       Service.findOne({ slug: serviceSlug, status: "active" }),
       getThemeSettings(),
       getMenuItems("header"),
+      getMenuItems("footer"),
     ]);
     if (!service) redirect("/checkout");
 
-    return <ServiceCheckout service={service} settings={settings} headerMenuItems={headerMenuItems} />;
+    return <ServiceCheckout service={service} settings={settings} headerMenuItems={headerMenuItems} footerMenuItems={footerMenuItems} />;
   }
 
   if (!session?.user?.id) redirect("/login");
@@ -79,7 +80,7 @@ export default async function CheckoutPage({ searchParams }) {
   );
 }
 
-function ServiceCheckout({ service, settings, headerMenuItems }) {
+function ServiceCheckout({ service, settings, headerMenuItems, footerMenuItems }) {
   const currency = settings?.stripeCurrency || "usd";
   const price = Number(service.price || 0);
   const total = money(price, currency);
@@ -182,7 +183,7 @@ function ServiceCheckout({ service, settings, headerMenuItems }) {
             </div>
           </div>
         </main>
-        <Footer settings={settings} />
+        <Footer settings={settings} initialFooterItems={footerMenuItems} />
         </PublicShell>
       </div>
     </>

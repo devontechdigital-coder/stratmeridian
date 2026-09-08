@@ -34,6 +34,10 @@ const SettingsSchema = new mongoose.Schema({
     type: String,
     default: ''
   },
+  footerTagline: {
+    type: String,
+    default: ''
+  },
   footerCredit: {
     type: String,
     default: ''

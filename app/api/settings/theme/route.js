@@ -33,6 +33,8 @@ export async function POST(req) {
     body.city = typeof body.city === 'string' ? body.city : '';
     body.state = typeof body.state === 'string' ? body.state : '';
     body.country = typeof body.country === 'string' ? body.country : '';
+    body.footerTagline = typeof body.footerTagline === 'string' ? body.footerTagline : '';
+    body.footerCredit = typeof body.footerCredit === 'string' ? body.footerCredit : '';
 
     if (body.phoneNumber) {
       const phone = validateAndFormatPhone(body.phoneNumber, body.defaultPhoneCountry);
@@ -56,6 +58,8 @@ export async function POST(req) {
           city: body.city,
           state: body.state,
           country: body.country,
+          footerTagline: body.footerTagline,
+          footerCredit: body.footerCredit,
           updatedAt: new Date(),
         },
       },

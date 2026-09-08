@@ -5,31 +5,6 @@ import Link from "next/link";
 import EnquiryForm from "@/components/public/EnquiryForm";
 import styles from "@/components/public/meridianTheme.module.css";
 
-const whoWeHelp = [
-  { num: "01", title: "Students", text: "First-time filers navigating US tax rules alongside coursework and campus life." },
-  { num: "02", title: "Visa Holders", text: "Nonresident and dual-status filers who need 1040NR and treaty guidance done right." },
-  { num: "03", title: "US Citizens Abroad", text: "Expats balancing US filing obligations with income and accounts held overseas." },
-  { num: "04", title: "Foreign Income Filers", text: "Individuals reporting foreign income, FBAR, and FATCA alongside a US return." },
-];
-
-const crossBorderCols = [
-  { title: "Foreign Income", text: "Reporting foreign wages, investments, and self-employment income correctly." },
-  { title: "Treaty Benefits", text: "Identifying tax treaty relief available to your visa or residency status." },
-  { title: "FBAR & FATCA", text: "Foreign account and asset disclosure handled alongside your regular filing." },
-];
-
-const ourTeam = [
-  { num: "01 / 03", title: "Filing Specialists", text: "Prepare and review 1040, 1040NR, and foreign income returns end to end." },
-  { num: "02 / 03", title: "Document Review", text: "Check every upload against the requirements for your specific filing type." },
-  { num: "03 / 03", title: "Client Support", text: "Answer questions by message or call as your filing moves through each step." },
-];
-
-const insightsPreview = [
-  { title: "Filing a 1040NR for the first time: what international students should know", tag: "Placeholder — article pending" },
-  { title: "FBAR vs FATCA: do you need to file both?", tag: "Placeholder — article pending" },
-  { title: "Claiming tax treaty benefits as a visa holder", tag: "Placeholder — article pending" },
-];
-
 export default function HomePageContent({ settings }) {
   const [typed, setTyped] = useState("");
   const [openFaq, setOpenFaq] = useState(0);
@@ -105,7 +80,7 @@ export default function HomePageContent({ settings }) {
                 <SmartLink link={settings.hero.secondaryButton} className={`${styles.btn} ${styles.btnOutlineLight}`} />
               </div>
               <div className={styles.heroTrust}>
-                <span>Trusted filing support</span><span className={styles.sep} /><span>Students &amp; visa holders</span><span className={styles.sep} /><span>Foreign income specialists</span>
+                <span>Dubai advisory firm</span><span className={styles.sep} /><span>Multinational groups</span><span className={styles.sep} /><span>Global investors</span>
               </div>
             </div>
           </div>
@@ -137,21 +112,25 @@ export default function HomePageContent({ settings }) {
         </div>
       )}
 
+      {settings.approach?.enabled && (
       <section className={`${styles.positioning} ${styles.section}`}>
         <div className={styles.wrap}>
           <div className={styles.reveal} data-reveal>
-            <div className={styles.eyebrow}>Our Approach</div>
-            <h2>Beyond filing.<br />Built for clarity.</h2>
-            <p>We help students, visa holders, and individuals with foreign income navigate US tax filing with confidence — from a first W-2 to complex FBAR and foreign income reporting.</p>
+            <div className={styles.eyebrow}>{settings.approach.eyebrow}</div>
+            <h2>{settings.approach.title}<br />{settings.approach.highlight}</h2>
+            <p>{settings.approach.description}</p>
           </div>
           <div className={`${styles.flow} ${styles.reveal}`} data-reveal>
-            <div className={styles.flowStep}><div className={styles.flabel}>Starting Point</div><div className={styles.fword}>Complexity</div></div>
-            <div className={styles.flowStep}><div className={styles.flabel}>Our Process</div><div className={styles.fword}>Review</div></div>
-            <div className={styles.flowStep}><div className={styles.flabel}>Our Approach</div><div className={styles.fword}>Guidance</div></div>
-            <div className={`${styles.flowStep} ${styles.flowStepActive}`}><div className={styles.flabel}>The Outcome</div><div className={styles.fword}>Clarity</div></div>
+            {settings.approach.items.map((item, index) => (
+              <div className={`${styles.flowStep} ${index === settings.approach.items.length - 1 ? styles.flowStepActive : ""}`} key={`${item.label}-${index}`}>
+                <div className={styles.flabel}>{item.label}</div>
+                <div className={styles.fword}>{item.word}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
+      )}
 
       {settings.services.enabled && (
         <section className={`${styles.services} ${styles.section}`} id="services">
@@ -179,6 +158,14 @@ export default function HomePageContent({ settings }) {
                     <div className={styles.sdEyebrow}>Service {String(activeService + 1).padStart(2, "0")}</div>
                     <div className={styles.sdTitle}>{settings.services.items[activeService].title}</div>
                     <p className={styles.sdDesc}>{settings.services.items[activeService].text}</p>
+                    {settings.services.items[activeService].href && (
+                      <div style={{ marginTop: 24 }}>
+                        <Link href={settings.services.items[activeService].href} className={`${styles.btn} ${styles.btnGold}`}>
+                          Know More about Services
+                          <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M0 5h13M9 1l4 4-4 4" stroke="currentColor" strokeWidth="1.3" /></svg>
+                        </Link>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
@@ -192,7 +179,17 @@ export default function HomePageContent({ settings }) {
                     <span className={styles.saPlus} />
                   </button>
                   <div className={styles.saBody}>
-                    <div className={styles.saBodyInner}>{item.text}</div>
+                    <div className={styles.saBodyInner}>
+                      {item.text}
+                      {item.href && (
+                        <div style={{ marginTop: 18 }}>
+                          <Link href={item.href} className={`${styles.btn} ${styles.btnOutlineDark}`}>
+                            Know More about Services
+                            <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M0 5h13M9 1l4 4-4 4" stroke="currentColor" strokeWidth="1.3" /></svg>
+                          </Link>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
               ))}
@@ -224,19 +221,22 @@ export default function HomePageContent({ settings }) {
         </section>
       )}
 
+      {settings.global?.enabled && (
       <section className={`${styles.global} ${styles.section}`}>
         <div className={styles.wrap}>
           <div className={styles.reveal} data-reveal>
-            <div className={styles.eyebrow}>Cross-Border Filing</div>
-            <h2>Foreign income and accounts,<br />reported the right way.</h2>
+            <div className={styles.eyebrow}>{settings.global.eyebrow}</div>
+            <h2>{settings.global.title}<br />{settings.global.highlight}</h2>
+            {settings.global.description && <p>{settings.global.description}</p>}
           </div>
           <div className={`${styles.globalCols} ${styles.reveal}`} data-reveal>
-            {crossBorderCols.map((col) => (
-              <div key={col.title}><h3>{col.title}</h3><p>{col.text}</p></div>
+            {settings.global.items.map((col, index) => (
+              <div key={`${col.title}-${index}`}><h3>{col.title}</h3><p>{col.text}</p></div>
             ))}
           </div>
         </div>
       </section>
+      )}
 
       {settings.features.enabled && (
         <section className={`${styles.why} ${styles.section}`} id="about">
@@ -255,37 +255,45 @@ export default function HomePageContent({ settings }) {
         </section>
       )}
 
-      <section className={`${styles.leadership} ${styles.section}`}>
+      {settings.leadership?.enabled && (
+      <section className={`${styles.leadership} ${styles.section}`} id="leadership">
         <div className={styles.wrap}>
           <div className={styles.reveal} data-reveal>
-            <div className={styles.eyebrow}>Our Team</div>
-            <h2>Support at every step of filing.</h2>
+            <div className={styles.eyebrow}>{settings.leadership.eyebrow}</div>
+            <h2>{settings.leadership.title} <span style={{ color: "var(--gold)" }}>{settings.leadership.highlight}</span></h2>
+            {settings.leadership.description && <p>{settings.leadership.description}</p>}
           </div>
         </div>
         <div className={styles.wrap}>
           <div className={`${styles.partnerGrid} ${styles.reveal}`} data-reveal>
-            {ourTeam.map((member) => (
-              <div className={styles.partnerCard} key={member.title}>
-                <div className={styles.partnerPhoto}><span className={styles.initials}>{member.num}</span></div>
+            {settings.leadership.items.map((member, index) => (
+              <Link className={styles.partnerCard} href={member.href || "/our-leadership-team"} key={`${member.title}-${index}`}>
+                <div className={styles.partnerPhoto}>
+                  {member.image && <img src={member.image} alt={member.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />}
+                </div>
                 <div className={styles.partnerInfo}>
                   <h3>{member.title}</h3>
+                  {member.role && <p className={styles.partnerRole}>{member.role}</p>}
                   <p className={styles.partnerBio}>{member.text}</p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
+      )}
 
+      {settings.who?.enabled && (
       <section className={`${styles.who} ${styles.section}`}>
         <div className={styles.wrap}>
           <div className={styles.reveal} data-reveal>
-            <div className={styles.eyebrow}>Who We Help</div>
-            <h2>Filing support built around your situation.</h2>
+            <div className={styles.eyebrow}>{settings.who.eyebrow}</div>
+            <h2>{settings.who.title} <span style={{ color: "var(--gold)" }}>{settings.who.highlight}</span></h2>
+            {settings.who.description && <p>{settings.who.description}</p>}
           </div>
           <div className={`${styles.whoList} ${styles.reveal}`} data-reveal>
-            {whoWeHelp.map((item) => (
-              <div className={styles.whoItem} key={item.num}>
+            {settings.who.items.map((item, index) => (
+              <div className={styles.whoItem} key={`${item.num}-${index}`}>
                 <div className={styles.wn}>{item.num}</div>
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
@@ -294,6 +302,7 @@ export default function HomePageContent({ settings }) {
           </div>
         </div>
       </section>
+      )}
 
       {settings.process.enabled && (
         <section className={`${styles.process} ${styles.section}`} id="process">
@@ -313,16 +322,21 @@ export default function HomePageContent({ settings }) {
         </section>
       )}
 
+      {settings.insights?.enabled && (
       <section className={`${styles.insights} ${styles.section}`} id="insights">
         <div className={styles.wrap}>
           <div className={`${styles.head} ${styles.reveal}`} data-reveal>
-            <div><div className={styles.eyebrow}>Insights</div><h2>Perspective on what matters.</h2></div>
+            <div>
+              <div className={styles.eyebrow}>{settings.insights.eyebrow}</div>
+              <h2>{settings.insights.title} <span style={{ color: "var(--gold)" }}>{settings.insights.highlight}</span></h2>
+              {settings.insights.description && <p>{settings.insights.description}</p>}
+            </div>
           </div>
           <div className={`${styles.articleGrid} ${styles.reveal}`} data-reveal>
-            {insightsPreview.map((article) => (
+            {settings.insights.items.map((article, index) => (
               <div className={styles.articleCard} key={article.title}>
                 <div className={styles.acBody}>
-                  <h3>{article.title}</h3>
+                  {article.href ? <Link href={article.href}><h3>{article.title}</h3></Link> : <h3>{article.title}</h3>}
                   <div className={styles.articleTag}>{article.tag}</div>
                 </div>
               </div>
@@ -330,6 +344,7 @@ export default function HomePageContent({ settings }) {
           </div>
         </div>
       </section>
+      )}
 
       {settings.faq.enabled && (
         <section className={`${styles.faq} ${styles.section}`} id="faq">

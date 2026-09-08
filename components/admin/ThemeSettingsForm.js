@@ -65,6 +65,7 @@ const ThemeSettingsForm = () => {
     headCode: '',
     metaLogo: '',
     metaFavicon: '',
+    footerTagline: '',
     footerCredit: '',
     phoneNumber: '',
     defaultPhoneCountry: 'US',
@@ -614,13 +615,24 @@ const ThemeSettingsForm = () => {
                   <Info className="w-4 h-4 text-violet-500" />
                   <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wider">Footer Settings</h3>
                 </div>
-                <div className="p-6">
+                <div className="p-6 space-y-5">
+                  <div>
+                    <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1.5 ml-1">Footer Tagline</label>
+                    <textarea
+                      name="footerTagline"
+                      value={formData.footerTagline || ''}
+                      onChange={handleChange}
+                      rows={3}
+                      className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-violet-500 outline-none transition-all font-semibold text-slate-700"
+                      placeholder="Short text shown under the footer logo"
+                    />
+                  </div>
                   <div>
                     <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1.5 ml-1">Footer Copyright Credit</label>
                     <input
                       type="text"
                       name="footerCredit"
-                      value={formData.footerCredit}
+                      value={formData.footerCredit || ''}
                       onChange={handleChange}
                       className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-violet-500 outline-none transition-all font-semibold text-slate-700"
                       placeholder="© 2024 Your Company. All rights reserved."
@@ -863,7 +875,7 @@ const ThemeSettingsForm = () => {
               </div>
               <div className="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
                 <span className="text-[7px] font-black text-slate-400 uppercase tracking-tighter">Footer</span>
-                <span className="text-[7px] text-slate-400 truncate max-w-[120px]">{formData.footerCredit}</span>
+                <span className="text-[7px] text-slate-400 truncate max-w-[120px]">{formData.footerTagline || formData.footerCredit}</span>
               </div>
             </div>
           </div>
